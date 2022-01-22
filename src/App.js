@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment ,useState} from 'react'
+import ReactDOM from 'react-dom'
+import DataState from "./context/data/dataState"
+import Header from "./components/layout/Header"
+import Footer from "./components/layout/Footer"
+import Data from "./components/pages/Data"
+import Alert from './components/alerts/Alert'
+import Backtest from './components/pages/Backtest'
+export const App = () => {
+    const [state,setState] = useState({"view":"dashboard"})
+    const {view } = state
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const onView = () => {
+        if (view == "dashboard") {
+            setState({"view":"backtest"})
+        } else {
+            setState({"view":"dashboard"})
+        }
+    }
+    return (
+        <DataState>
+            <Header />
+            <div className="container-sm align-middle text-center">
+                <Alert />
+                <button type="button" onClick={onView} class="btn btn-primary m-2">{view}</button>
+                {view =="dashboard" ? <Data /> : <Backtest />}
+            </div>
+            <Footer />
+        </DataState>
+    )
 }
 
-export default App;
+export default App
+
