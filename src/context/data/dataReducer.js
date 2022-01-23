@@ -3,7 +3,8 @@ import { GET_DATA, SET_TITLE, SET_TEXT, SET_LOADING,
         GET_ITERATIONS, 
         GET_ORDERS, 
         GET_FILLS, 
-        GET_TRADE_PARAMS , STOP_LOADING,SET_PRODUCT, SET_ERROR, CLEAR_ERROR, GET_TRADES, GET_CLOUD_ERRORS,GET_BACKTEST,GET_SYMBOLS } from "./types";
+        GET_TRADE_PARAMS , STOP_LOADING,SET_PRODUCT, SET_ERROR, CLEAR_ERROR, 
+        GET_TRADES, GET_CLOUD_ERRORS,GET_BACKTEST,GET_SYMBOLS, REGISTER,LOGIN,LOGOUT } from "./types";
 export default(state,action) => {
     switch(action.type) {
         case SET_ERROR:
@@ -99,6 +100,32 @@ export default(state,action) => {
                     available_symbols:action.payload,
                     loading:false
                 }
+            
+        case REGISTER:
+                return {
+                    ...state,
+                    user:action.payload.user,
+                    isAuth:true,
+                    token:action.payload.token,
+                    loading:false
+                }
+        case LOGIN:
+                return {
+                    ...state,
+                    user:action.payload.user,
+                    isAuth:true,
+                    token:action.payload.token,
+                    loading:false
+                }
+
+        case LOGOUT:
+            return {
+                ...state,
+                user:null,
+                isAuth:false,
+                token:"",
+                loading:false
+            }
             
     }
 }

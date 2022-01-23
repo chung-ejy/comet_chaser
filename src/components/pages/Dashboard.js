@@ -6,18 +6,18 @@ import Alert from "../alerts/Alert"
 import IterationTable from '../data/IterationTable';
 import HistoricalTable from '../data/HistoricalTable';
 import OrderTable from '../data/OrderTable';
-import FillTable from '../data/FillTable';
 import TradeTable from '../data/TradeTable'
 import ErrorTable from '../data/ErrorTable'
 import TradeParams from '../data/TradeParams'
 
-const Data = () => {
+const Dashboard = () => {
     const dataContext = useContext(DataContext)
     const [state,setState] = useState({"product":"test","table":"iterations"})
     const {data,loading,title,text,
             getHistoricals,getTradeParams,getFills,getOrders,getIterations,getTrades
                             ,setProduct
                             ,getCloudErrors
+                            ,isAuth
                         } = dataContext;
     const {table,product} = state
     useEffect(() => {
@@ -29,7 +29,7 @@ const Data = () => {
         getTrades()
         getCloudErrors()
     },//eslint-disable-next-line
-    [product]
+    [product,isAuth]
     );
     const onClick = (e) => {
         if (product == "test"){
@@ -94,4 +94,4 @@ const Data = () => {
     );
 };
 
-export default Data
+export default Dashboard
