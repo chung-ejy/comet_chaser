@@ -15,3 +15,6 @@ export const GET_CLOUD_ERRORS = "GET_CLOUD_ERRORS"
 export const SET_PRODUCT = "SET_PRODUCT"
 export const GET_BACKTEST = "GET_BACKTEST"
 export const GET_SYMBOLS = "GET_SYMBOLS"
+export const REGISTER = 'REGISTER'
+export const LOGIN = 'LOGIN'
+export const LOGOUT = 'LOGOUT'

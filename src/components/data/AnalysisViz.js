@@ -35,6 +35,7 @@ const AnalysisViz = () => {
                     data={analysis}
                     y="actual_delta"
                     x="date"
+                    sample={analysis.size}
                     scale={{"x":"time","y":"linear"}}
                 />
                 {/* <VictoryLine

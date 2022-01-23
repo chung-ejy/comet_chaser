@@ -14,6 +14,9 @@ import { GET_DATA,
         SET_ERROR, 
         SET_PRODUCT,
         CLEAR_ERROR, 
+        REGISTER,
+        LOGIN,
+        LOGOUT,
         GET_SYMBOLS} from "./types";
 
 import React, { useReducer } from "react";
@@ -23,7 +26,7 @@ import axios from "axios"
 
 const DataState = props => {
     const initialState = {
-        title: "Stargazer",
+        title: "CometChaser",
         product: "test",
         trades:[],
         data: {},
@@ -36,6 +39,9 @@ const DataState = props => {
         trade_params:{},
         cloud_errors:[],
         available_symbols:[],
+        isAuth:false,
+        user:null,
+        token:'',
         error:null,
         loading:false
     }
@@ -222,6 +228,51 @@ const DataState = props => {
         });
     }
 
+    
+    const register = (data) => {
+        setLoading()
+        axios.post(`${base_url}/api/users/register/`,data).then(res=>{
+            dispatch({
+                type:REGISTER,
+                payload:res.data
+            })
+        }).catch(err => {
+            stopLoading()
+            setError(err.message,"danger")
+        });
+    }
+
+    const login = (data) => {
+        setLoading()
+        axios.post(`${base_url}/api/users/login/`,data).then(res=>{
+            dispatch({
+                type:LOGIN,
+                payload:res.data
+            })
+        }).catch(err => {
+            stopLoading()
+            setError(err.message,"danger")
+        });
+    }
+
+    const logout = () => {
+        setLoading()
+        const config = {
+            headers : {
+                "Content-Type":"application/json"
+            }
+        }
+        config.headers["Authorization"] = `Token ${state.token}`
+        axios.post(`${base_url}/api/users/logout/`,null,config).then(res=>{
+            dispatch({
+                type:LOGOUT
+            })
+        }).catch(err => {
+            stopLoading()
+            setError(err.message,"danger")
+        });
+    }
+
     return (
         <DataContext.Provider value={{
             historicals:state.historicals,
@@ -239,6 +290,10 @@ const DataState = props => {
             cloud_errors:state.cloud_errors,
             available_symbols:state.available_symbols,
             analysis:state.analysis,
+            isAuth:state.isAuth,
+            register,
+            login,
+            logout,
             setError,
             setTitle,
             setText,
