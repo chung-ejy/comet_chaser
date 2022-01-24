@@ -4,7 +4,7 @@ import { GET_DATA, SET_TITLE, SET_TEXT, SET_LOADING,
         GET_ORDERS, 
         GET_FILLS, 
         GET_TRADE_PARAMS ,SET_PRODUCT, SET_ERROR, CLEAR_ERROR, 
-        GET_TRADES, GET_CLOUD_ERRORS,GET_BACKTEST,GET_SYMBOLS, REGISTER,LOGIN,LOGOUT,FAILED_LOGIN,FAILED_REGISTER } from "./types";
+        GET_TRADES, GET_CLOUD_ERRORS,GET_BACKTEST,GET_SYMBOLS, REGISTER,LOGIN,LOGOUT,FAILED_LOGIN,FAILED_REGISTER,GET_USER } from "./types";
 
 const main_reducer = (state,action) => {
     switch(action.type) {
@@ -130,6 +130,13 @@ const main_reducer = (state,action) => {
                     token:action.payload.token,
                     loading:false
                 }
+        case GET_USER:
+                    return {
+                        ...state,
+                        user:action.payload,
+                        isAuth:true,
+                        loading:false
+                    }
         case FAILED_LOGIN:
                 return {
                     ...state,
