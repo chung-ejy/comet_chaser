@@ -22,11 +22,12 @@ const HistoricalTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {historicals.map(row => 
+                    {historicals.size > 0 ? 
+                    historicals.map(row => 
                         (<tr>
                         {Object.keys(row).map(key => ["time","crypto","signal"].includes(key) ? <td>{row[key]}</td> : <td className="d-none d-lg-table-cell">{row[key]}</td>)}
                         </tr>)
-                    )}
+                    ):<tr></tr>}
                 </tbody>
             </table>
         </div>
