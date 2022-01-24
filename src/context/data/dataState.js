@@ -127,6 +127,22 @@ const DataState = props => {
         });
     }
 
+    const updateBotStatus = (params) => { 
+        setLoading()
+        params["username"] = state.user.username
+        params[state.product] = !state.product
+        console.log(params)
+        axios.put(`${base_url}/api/roster/`,{params:params}).then(res=>{
+            dispatch({
+                type:UPDATE_TRADE_PARAMS,
+                payload:res.data
+            })
+        }).catch(err => {
+            stopLoading()
+            setError(err.message,"danger")
+        });
+    }
+
     const getBotStatus = () => { 
         setLoading()
         axios.get(`${base_url}/api/roster/`,{params:{version:state.product,username:state.user.username,data_request:"bot_status"}}).then(res=>{
@@ -352,7 +368,8 @@ const DataState = props => {
             getBacktest,
             setProduct,
             getSymbols,
-            loadUser
+            loadUser,
+            updateBotStatus
         }}>
             {props.children}
         </DataContext.Provider>

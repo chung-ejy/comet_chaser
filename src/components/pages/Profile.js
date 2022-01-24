@@ -20,6 +20,7 @@ const Profile = () => {
                             ,bot_status
                             ,trade_params
                             ,getSymbols
+                            ,updateBotStatus
                         } = dataContext;
     const {product} = state
     useEffect(() => {
@@ -44,6 +45,20 @@ const Profile = () => {
         
     }
 
+    const onBigClick = (e) => {
+        if (bot_status[product]){
+            console.log("shuttingdown!",product)
+            updateBotStatus({"version":product})
+            // setState({...state,["product"]:"live"})
+            // setProduct("live")
+        } else {
+            // setState({...state,["product"]:"test"})
+            // setProduct("test")
+            console.log("turningon!",product)
+        }
+        
+    }
+
     return (<div className='card text-center'>
                 <div className='card-body'>
                     <h1 onClick={onClick}className="card-title justify-content-center">
@@ -58,6 +73,9 @@ const Profile = () => {
                         <Fragment>
                         <TradeParams />
                         <TradeParamForm />
+                        <button type="button" onClick={onBigClick} class="btn btn-primary">
+                            {bot_status !== null ? bot_status[product] ? " SHUTDOWN" : " TURNON" : ""}
+                        </button>
                         <div></div>
                         </Fragment>
                     ) : <Navigate to="/"    />
