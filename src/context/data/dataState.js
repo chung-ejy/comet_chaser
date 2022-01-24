@@ -19,7 +19,9 @@ import {
         FAILED_LOGIN,
         FAILED_REGISTER,
         GET_USER,
-        GET_SYMBOLS} from "./types";
+        GET_SYMBOLS,
+        UPDATE_TRADE_PARAMS,
+        GET_BOT_STATUS} from "./types";
 
 import React, { useReducer } from "react";
 import DataContext from "./dataContext"
@@ -39,13 +41,14 @@ const DataState = props => {
         trade_params:{},
         cloud_errors:[],
         available_symbols:[],
+        bot_status:{},
         isAuth:false,
         user:null,
         token:localStorage.getItem('token'),
         error:null,
         loading:false
     }
-    const base_url = "https://cometchaserapi.herokuapp.com"
+    const base_url = "http://localhost:8000"
     const [state,dispatch] = useReducer(dataReducer,initialState)
 
     const setError = (msg,type) => {
@@ -98,10 +101,38 @@ const DataState = props => {
 
     const getTradeParams = () => { 
         setLoading()
-        axios.get(`${base_url}/api/roster/`,{params:{version:state.product,username:state.user.username}}).then(res=>{
+        axios.get(`${base_url}/api/roster/`,{params:{version:state.product,username:state.user.username,data_request:"trade_params"}}).then(res=>{
             dispatch({
                 type:GET_TRADE_PARAMS,
                 payload:res.data
+            })
+        }).catch(err => {
+            stopLoading()
+            setError(err.message,"danger")
+        });
+    }
+
+    const updateTradeParams = (params) => { 
+        setLoading()
+        params["version"] = state.product
+        params["username"] = state.user.username
+        axios.post(`${base_url}/api/roster/`,{params:params}).then(res=>{
+            dispatch({
+                type:UPDATE_TRADE_PARAMS,
+                payload:res.data
+            })
+        }).catch(err => {
+            stopLoading()
+            setError(err.message,"danger")
+        });
+    }
+
+    const getBotStatus = () => { 
+        setLoading()
+        axios.get(`${base_url}/api/roster/`,{params:{version:state.product,username:state.user.username,data_request:"bot_status"}}).then(res=>{
+            dispatch({
+                type:GET_BOT_STATUS,
+                payload:res.data.bot_status
             })
         }).catch(err => {
             stopLoading()
@@ -303,6 +334,8 @@ const DataState = props => {
             isAuth:state.isAuth,
             user:state.user,
             token:state.token,
+            bot_status:state.bot_status,
+            getBotStatus,
             register,
             login,
             logout,
@@ -313,6 +346,7 @@ const DataState = props => {
             getIterations,
             getOrders,
             getTradeParams,
+            updateTradeParams,
             getTrades,
             getCloudErrors,
             getBacktest,
