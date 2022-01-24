@@ -3,8 +3,8 @@ import DataContext from '../../context/data/dataContext'
 
 const TradeParams = () => {
     const dataContext = useContext(DataContext)
-    const {trade_params,loading} = dataContext
-    return ( loading ? "" :
+    const {trade_params,loading, isAuth} = dataContext
+    return ( loading || !isAuth ? "" :
         <div className="card card-body mt-4 mb-4">
             <div className="card card-body mt-4 mb-4">
             <table className="table table-responsive-sm">

@@ -9,6 +9,7 @@ import OrderTable from '../data/OrderTable';
 import TradeTable from '../data/TradeTable'
 import ErrorTable from '../data/ErrorTable'
 import TradeParams from '../data/TradeParams'
+import { Navigate } from 'react-router-dom';
 
 const Dashboard = () => {
     const dataContext = useContext(DataContext)
@@ -18,26 +19,30 @@ const Dashboard = () => {
                             ,setProduct
                             ,getCloudErrors
                             ,isAuth
+                            ,user
                         } = dataContext;
     const {table,product} = state
     useEffect(() => {
-        getIterations()
-        getHistoricals()
-        getFills()
-        getOrders()
-        getTradeParams()
-        getTrades()
-        getCloudErrors()
+        if (user!=null) {
+            getTradeParams()
+            getHistoricals()
+            getIterations()
+            getTrades()
+            getCloudErrors()
+            getOrders()
+        } else {
+            console.log("nouser")
+        }
     },//eslint-disable-next-line
-    [product,isAuth]
+    [user,isAuth,product]
     );
     const onClick = (e) => {
         if (product == "test"){
             setState({...state,["product"]:"live"})
-            setProduct("live")
+            // setProduct("live")
         } else {
             setState({...state,["product"]:"test"})
-            setProduct("test")
+            // setProduct("test")
         }
         
     }
@@ -73,7 +78,7 @@ const Dashboard = () => {
                         <h3 className="text-center m-3">
                             <i className="fas fa-spinner text-primary fa-7x"></i>
                         </h3>
-                    </Fragment>) : (
+                    </Fragment>) : !isAuth ? (<Navigate to="/"/>) : (
                         <Fragment>
                             <button type="button" onClick={onIteration} class="btn btn-primary m-2">iterations</button>
                             <button type="button" onClick={onHistorical} class="btn btn-primary m-2">historicals</button>
@@ -82,7 +87,7 @@ const Dashboard = () => {
                             <button type="button" onClick={onError} class="btn btn-primary m-2">errors</button>
                             {table == "orders" ? <OrderTable /> : table == "iterations" ? 
                             <Fragment> 
-                                <TradeParams />
+                                <TradeParams /> 
                                 <IterationTable />
                             </Fragment>
                             : table == "historicals"? <HistoricalTable /> : table=="errors"? <ErrorTable></ErrorTable> : <TradeTable></TradeTable> }

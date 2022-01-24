@@ -26,7 +26,7 @@ const Register = () => {
         password2
     } = state
     if (isAuth)  {
-        return  <Navigate to="/"/>
+        return  <Navigate to="/dashboard"/>
     } else {
         return <div className="col-md-6 m-auto">
             <div className="card card-body mt-5">
