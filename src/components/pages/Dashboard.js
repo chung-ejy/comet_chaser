@@ -25,26 +25,24 @@ const Dashboard = () => {
     useEffect(() => {
         if (user!=null) {
             getTradeParams()
+            getHistoricals()
+            getIterations()
+            getTrades()
+            getCloudErrors()
+            getOrders()
         } else {
             console.log("nouser")
         }
-    //     // getIterations()
-    //     // getHistoricals()
-    //     // getFills()
-    //     // getOrders()
-    //     // getTradeParams()
-    //     // getTrades()
-    //     // getCloudErrors()
     },//eslint-disable-next-line
     [user,isAuth,product]
     );
     const onClick = (e) => {
         if (product == "test"){
             setState({...state,["product"]:"live"})
-            setProduct("live")
+            // setProduct("live")
         } else {
             setState({...state,["product"]:"test"})
-            setProduct("test")
+            // setProduct("test")
         }
         
     }
@@ -82,19 +80,18 @@ const Dashboard = () => {
                         </h3>
                     </Fragment>) : !isAuth ? (<Navigate to="/"/>) : (
                         <Fragment>
-                            <TradeParams />
-                            {/* <button type="button" onClick={onIteration} class="btn btn-primary m-2">iterations</button>
+                            <button type="button" onClick={onIteration} class="btn btn-primary m-2">iterations</button>
                             <button type="button" onClick={onHistorical} class="btn btn-primary m-2">historicals</button>
                             <button type="button" onClick={onOrder} class="btn btn-primary m-2">orders</button>
                             <button type="button" onClick={onTrade} class="btn btn-primary m-2">trades</button>
-                            <button type="button" onClick={onError} class="btn btn-primary m-2">errors</button> */}
-                            {/* {table == "orders" ? <OrderTable /> : table == "iterations" ? 
+                            <button type="button" onClick={onError} class="btn btn-primary m-2">errors</button>
+                            {table == "orders" ? <OrderTable /> : table == "iterations" ? 
                             <Fragment> 
-                                <TradeParams /> */}
-                                {/* <IterationTable /> */}
+                                <TradeParams /> 
+                                <IterationTable />
                             </Fragment>
-                            // : table == "historicals"? <HistoricalTable /> : table=="errors"? <ErrorTable></ErrorTable> : <TradeTable></TradeTable> }
-                        // </Fragment>
+                            : table == "historicals"? <HistoricalTable /> : table=="errors"? <ErrorTable></ErrorTable> : <TradeTable></TradeTable> }
+                        </Fragment>
                     )
                 }
             </div>

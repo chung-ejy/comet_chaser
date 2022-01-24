@@ -34,7 +34,6 @@ const DataState = props => {
         backtest:[],
         analysis:[],
         orders:[],
-        fills:[],
         iterations:[],
         trade_params:{},
         cloud_errors:[],
@@ -138,23 +137,10 @@ const DataState = props => {
 
     const getHistoricals= () => {
         setLoading()
-        axios.get(`${base_url}/api/${state.product}/?data_request=historicals`).then(res=>{
+        axios.get(`${base_url}/api/reporter/`,{params:{version:state.product,username:state.user.username,data_request:"historicals"}}).then(res=>{
             dispatch({
                 type:GET_HISTORICALS,
-                payload:res.data
-            })
-        }).catch(err => {
-            stopLoading()
-            setError(err.message,"danger")
-        });
-    }
-
-    const getFills= () => {
-        setLoading()
-        axios.get(`${base_url}/api/${state.product}/?data_request=fills`).then(res=>{
-            dispatch({
-                type:GET_FILLS,
-                payload:res.data
+                payload:res.data.data
             })
         }).catch(err => {
             stopLoading()
@@ -164,10 +150,10 @@ const DataState = props => {
 
     const getOrders= () => {
         setLoading()
-        axios.get(`${base_url}/api/${state.product}/?data_request=all_orders`).then(res=>{
+        axios.get(`${base_url}/api/reporter/`,{params:{version:state.product,username:state.user.username,data_request:"orders"}}).then(res=>{
             dispatch({
                 type:GET_ORDERS,
-                payload:res.data
+                payload:res.data.data
             })
         }).catch(err => {
             stopLoading()
@@ -177,10 +163,10 @@ const DataState = props => {
 
     const getTrades= () => {
         setLoading()
-        axios.get(`${base_url}/api/${state.product}/?data_request=all_trades`).then(res=>{
+        axios.get(`${base_url}/api/reporter/`,{params:{version:state.product,username:state.user.username,data_request:"trades"}}).then(res=>{
             dispatch({
                 type:GET_TRADES,
-                payload:res.data
+                payload:res.data.data
             })
         }).catch(err => {
             stopLoading()
@@ -190,10 +176,10 @@ const DataState = props => {
 
     const getCloudErrors= () => {
         setLoading()
-        axios.get(`${base_url}/api/${state.product}/?data_request=errors`).then(res=>{
+        axios.get(`${base_url}/api/reporter/`,{params:{version:state.product,username:state.user.username,data_request:"errors"}}).then(res=>{
             dispatch({
                 type:GET_CLOUD_ERRORS,
-                payload:res.data
+                payload:res.data.data
             })
         }).catch(err => {
             stopLoading()
@@ -203,10 +189,10 @@ const DataState = props => {
 
     const getIterations= () => {
         setLoading()
-        axios.get(`${base_url}/api/${state.product}/?data_request=iterations`).then(res=>{
+        axios.get(`${base_url}/api/reporter/`,{params:{version:state.product,username:state.user.username,data_request:"iterations"}}).then(res=>{
             dispatch({
                 type:GET_ITERATIONS,
-                payload:res.data
+                payload:res.data.data
             })
         }).catch(err => {
             stopLoading()
@@ -276,7 +262,6 @@ const DataState = props => {
         <DataContext.Provider value={{
             historicals:state.historicals,
             trade_params:state.trade_params,
-            fills:state.fills,
             orders:state.orders,
             iterations:state.iterations,
             loading:state.loading,
@@ -299,7 +284,6 @@ const DataState = props => {
             setTitle,
             setText,
             getData,
-            getFills,
             getHistoricals,
             getIterations,
             getOrders,
