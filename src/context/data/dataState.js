@@ -18,6 +18,7 @@ import {
         LOGOUT,
         FAILED_LOGIN,
         FAILED_REGISTER,
+        GET_USER,
         GET_SYMBOLS} from "./types";
 
 import React, { useReducer } from "react";
@@ -40,7 +41,7 @@ const DataState = props => {
         available_symbols:[],
         isAuth:false,
         user:null,
-        token:'',
+        token:localStorage.getItem('token'),
         error:null,
         loading:false
     }
@@ -207,11 +208,13 @@ const DataState = props => {
         axios.post(`${base_url}/api/users/register/`,data).then(res=>{
             if(Object.keys(res.data).includes("error")){
                 stopLoading()
+                localStorage.removeItem('token')
                 dispatch({
                     type:FAILED_REGISTER
                 })
                 setError(res.data.error,"danger")
             } else {
+                localStorage.setItem('token', action.payload.token)
                 dispatch({
                     type:REGISTER,
                     payload:res.data
@@ -230,9 +233,26 @@ const DataState = props => {
                 })
                 setError(res.data.error,"danger")
             } else {
-                console.log("loggingin")
+                localStorage.setItem('token', action.payload.token)
                 dispatch({
                     type:LOGIN,
+                    payload:res.data
+                })
+            } 
+        })
+    }
+
+    const loadUser = () => {
+        setLoading()
+        axios.post(`${base_url}/api/users/user/`, tokenConfig(getState)).then(res=>{
+            if(Object.keys(res.data).includes("error")){
+                stopLoading()
+                dispatch({
+                    type:FAILED_LOGIN
+                })
+            } else {
+                dispatch({
+                    type:GET_USER,
                     payload:res.data
                 })
             } 
@@ -248,6 +268,7 @@ const DataState = props => {
         }
         config.headers["Authorization"] = `Token ${state.token}`
         axios.post(`${base_url}/api/users/logout/`,null,config).then(res=>{
+            localStorage.removeItem('token')
             dispatch({
                 type:LOGOUT
             })
@@ -290,7 +311,8 @@ const DataState = props => {
             getCloudErrors,
             getBacktest,
             setProduct,
-            getSymbols
+            getSymbols,
+            loadUser
         }}>
             {props.children}
         </DataContext.Provider>

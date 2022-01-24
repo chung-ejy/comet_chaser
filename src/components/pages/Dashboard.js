@@ -15,7 +15,7 @@ const Dashboard = () => {
     const dataContext = useContext(DataContext)
     const [state,setState] = useState({"product":"test","table":"iterations"})
     const {loading,title,
-            getHistoricals,getTradeParams,getOrders,getIterations,getTrades
+            getHistoricals,getTradeParams,getOrders,getIterations,getTrades, loadUser,
                             ,setProduct
                             ,getCloudErrors
                             ,isAuth
@@ -30,6 +30,8 @@ const Dashboard = () => {
             getTrades()
             getCloudErrors()
             getOrders()
+        } else {
+            loadUser()
         }
     },//eslint-disable-next-line
     [user,isAuth,product]
