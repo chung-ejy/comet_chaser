@@ -49,7 +49,7 @@ const DataState = props => {
         error:null,
         loading:false
     }
-    const base_url = "http://localhost:8000"
+    const base_url = "https://cometchaserapi.herokuapp.com"
     const [state,dispatch] = useReducer(dataReducer,initialState)
 
     const setError = (msg,type) => {
