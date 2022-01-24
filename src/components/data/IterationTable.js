@@ -27,11 +27,11 @@ const IterationTable = () => {
                     </thead>
                     <tbody>
                     
-                    {iterations.size > 0 ? iterations.map(row => 
+                   {iterations.map(row => 
                         (<tr>
                         {Object.keys(row).map(key => ["retrack_days","value","conservative","entry_strategy","exit_strategy","sleep_time","status"].includes(key) ? <td className="d-none d-lg-table-cell">{row[key]}</td> : <td>{row[key]}</td>)}
-                        </tr>)
-                    ): <tr></tr>}
+                        </tr>))
+                    }
                 </tbody>
             </table>
         </div>
