@@ -230,7 +230,6 @@ const DataState = props => {
     const login = (data) => {
         setLoading()
         axios.post(`${base_url}/api/users/login/`,data).then(res=>{
-            console.log(res.data)
             dispatch({
                 type:LOGIN,
                 payload:res.data
