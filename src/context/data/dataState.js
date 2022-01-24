@@ -110,11 +110,10 @@ const DataState = props => {
 
     const getTradeParams = () => { 
         setLoading()
-        axios.get(`${base_url}/api/${state.product}/`,{params:{data_request:"trade_params"}}).then(res=>{
+        axios.get(`${base_url}/api/roster/`,{params:{version:state.product,username:state.user.username}}).then(res=>{
             dispatch({
                 type:GET_TRADE_PARAMS,
-                payload:res.data[0]
-
+                payload:res.data
             })
         }).catch(err => {
             stopLoading()
@@ -291,6 +290,8 @@ const DataState = props => {
             available_symbols:state.available_symbols,
             analysis:state.analysis,
             isAuth:state.isAuth,
+            user:state.user,
+            token:state.token,
             register,
             login,
             logout,
