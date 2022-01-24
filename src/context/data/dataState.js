@@ -214,7 +214,7 @@ const DataState = props => {
                 })
                 setError(res.data.error,"danger")
             } else {
-                localStorage.setItem('token', action.payload.token)
+                localStorage.setItem('token', res.data.token)
                 dispatch({
                     type:REGISTER,
                     payload:res.data
@@ -233,7 +233,7 @@ const DataState = props => {
                 })
                 setError(res.data.error,"danger")
             } else {
-                localStorage.setItem('token', action.payload.token)
+                localStorage.setItem('token', res.data.token)
                 dispatch({
                     type:LOGIN,
                     payload:res.data
@@ -244,7 +244,13 @@ const DataState = props => {
 
     const loadUser = () => {
         setLoading()
-        axios.post(`${base_url}/api/users/user/`, tokenConfig(getState)).then(res=>{
+        const config = {
+            headers : {
+                "Content-Type":"application/json"
+            }
+        }
+        config.headers["Authorization"] = `Token ${localStorage.getItem("token")}`
+        axios.get(`${base_url}/api/users/user/`, config).then(res=>{
             if(Object.keys(res.data).includes("error")){
                 stopLoading()
                 dispatch({
@@ -318,4 +324,24 @@ const DataState = props => {
         </DataContext.Provider>
     )
 }
+
+export const tokenConfig = (getState) => {
+    // Get token from state
+    const token = getState().auth.token;
+  
+    // Headers
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+  
+    // If token, add to headers config
+    if (token) {
+      config.headers['Authorization'] = `Token ${token}`;
+    }
+  
+    return config;
+  };
+  
 export default DataState;

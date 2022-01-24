@@ -1,10 +1,15 @@
-import React, {useContext} from 'react';
+import React, {useContext,useEffect} from 'react';
 import DataContext from "../../context/data/dataContext"
 import Alert from "../alerts/Alert"
 
 const Landing = () => {
     const dataContext = useContext(DataContext)
-    const {isAuth,user} = dataContext
+    const {isAuth,user,loadUser} = dataContext
+    useEffect(() => {
+            loadUser()
+    },//eslint-disable-next-line
+    [user,isAuth]
+    );
     return (<div className='card text-center'>
                 <div className='card-body'>
                              <Alert />

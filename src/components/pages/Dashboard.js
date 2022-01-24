@@ -15,7 +15,7 @@ const Dashboard = () => {
     const dataContext = useContext(DataContext)
     const [state,setState] = useState({"product":"test","table":"iterations"})
     const {loading,title,
-            getHistoricals,getTradeParams,getOrders,getIterations,getTrades, loadUser,
+            getHistoricals,getTradeParams,getOrders,getIterations,getTrades, loadUser
                             ,setProduct
                             ,getCloudErrors
                             ,isAuth
