@@ -37,10 +37,10 @@ const Dashboard = () => {
     const onClick = (e) => {
         if (product === "test"){
             setState({...state,["product"]:"live"})
-            // setProduct("live")
+            setProduct("live")
         } else {
             setState({...state,["product"]:"test"})
-            // setProduct("test")
+            setProduct("test")
         }
         
     }
