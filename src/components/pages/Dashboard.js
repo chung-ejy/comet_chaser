@@ -14,8 +14,8 @@ import { Navigate } from 'react-router-dom';
 const Dashboard = () => {
     const dataContext = useContext(DataContext)
     const [state,setState] = useState({"product":"test","table":"iterations"})
-    const {data,loading,title,text,
-            getHistoricals,getTradeParams,getFills,getOrders,getIterations,getTrades
+    const {loading,title,
+            getHistoricals,getTradeParams,getOrders,getIterations,getTrades
                             ,setProduct
                             ,getCloudErrors
                             ,isAuth
@@ -23,21 +23,19 @@ const Dashboard = () => {
                         } = dataContext;
     const {table,product} = state
     useEffect(() => {
-        if (user!=null) {
+        if (user!=null && isAuth) {
             getTradeParams()
             getHistoricals()
             getIterations()
             getTrades()
             getCloudErrors()
             getOrders()
-        } else {
-            console.log("nouser")
         }
     },//eslint-disable-next-line
     [user,isAuth,product]
     );
     const onClick = (e) => {
-        if (product == "test"){
+        if (product === "test"){
             setState({...state,["product"]:"live"})
             // setProduct("live")
         } else {
@@ -85,12 +83,12 @@ const Dashboard = () => {
                             <button type="button" onClick={onOrder} class="btn btn-primary m-2">orders</button>
                             <button type="button" onClick={onTrade} class="btn btn-primary m-2">trades</button>
                             <button type="button" onClick={onError} class="btn btn-primary m-2">errors</button>
-                            {table == "orders" ? <OrderTable /> : table == "iterations" ? 
+                            {table === "orders" ? <OrderTable /> : table === "iterations" ? 
                             <Fragment> 
                                 <TradeParams /> 
                                 <IterationTable />
                             </Fragment>
-                            : table == "historicals"? <HistoricalTable /> : table=="errors"? <ErrorTable></ErrorTable> : <TradeTable></TradeTable> }
+                            : table === "historicals"? <HistoricalTable /> : table==="errors"? <ErrorTable></ErrorTable> : <TradeTable></TradeTable> }
                         </Fragment>
                     )
                 }

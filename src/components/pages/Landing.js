@@ -1,10 +1,9 @@
-import React, {useContext,useEffect,Fragment,useState} from 'react';
+import React, {useContext} from 'react';
 import DataContext from "../../context/data/dataContext"
 import Alert from "../alerts/Alert"
 
 const Landing = () => {
     const dataContext = useContext(DataContext)
-    const [state,setState] = useState({"product":"test","table":"iterations"})
     const {isAuth,user} = dataContext
     return (<div className='card text-center'>
                 <div className='card-body'>

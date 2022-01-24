@@ -1,8 +1,7 @@
-import { GET_DATA,  
+import {
         GET_HISTORICALS, 
         GET_ITERATIONS, 
         GET_ORDERS, 
-        GET_FILLS, 
         GET_TRADE_PARAMS ,
         GET_TRADES,
         GET_CLOUD_ERRORS,
@@ -17,6 +16,8 @@ import { GET_DATA,
         REGISTER,
         LOGIN,
         LOGOUT,
+        FAILED_LOGIN,
+        FAILED_REGISTER,
         GET_SYMBOLS} from "./types";
 
 import React, { useReducer } from "react";
@@ -29,7 +30,6 @@ const DataState = props => {
         title: "CometChaser",
         product: "test",
         trades:[],
-        data: {},
         historicals:[],
         backtest:[],
         analysis:[],
@@ -44,7 +44,7 @@ const DataState = props => {
         error:null,
         loading:false
     }
-    const base_url = "https://cometchaserapi.herokuapp.com"
+    const base_url = "http://localhost:8000"
     const [state,dispatch] = useReducer(dataReducer,initialState)
     const setError = (msg,type) => {
         dispatch({
@@ -91,19 +91,6 @@ const DataState = props => {
         dispatch({
             type:SET_TEXT,
             payload: text
-        });
-    }
-
-    const getData = (data) => {
-        setLoading()
-        axios.get(`${base_url}/api/${state.product}/`,data).then(res=>{
-            dispatch({
-                type:GET_DATA,
-                payload:res.data
-            })
-        }).catch(err => {
-            stopLoading()
-            setError(err.message,"danger")
         });
     }
 
@@ -202,10 +189,10 @@ const DataState = props => {
 
     const getSymbols= () => {
         setLoading()
-        axios.get(`${base_url}/api/backtest/?data_request=symbols`).then(res=>{
+        axios.get(`${base_url}/api/backtest/`).then(res=>{
             dispatch({
                 type:GET_SYMBOLS,
-                payload:res.data.symbols
+                payload:res.data
             })
         }).catch(err => {
             stopLoading()
@@ -217,27 +204,38 @@ const DataState = props => {
     const register = (data) => {
         setLoading()
         axios.post(`${base_url}/api/users/register/`,data).then(res=>{
-            dispatch({
-                type:REGISTER,
-                payload:res.data
-            })
-        }).catch(err => {
-            stopLoading()
-            setError(err.message,"danger")
-        });
+            if(Object.keys(res.data).includes("error")){
+                stopLoading()
+                dispatch({
+                    type:FAILED_REGISTER
+                })
+                setError(res.data.error,"danger")
+            } else {
+                dispatch({
+                    type:REGISTER,
+                    payload:res.data
+                })
+            }
+        })
     }
 
     const login = (data) => {
         setLoading()
         axios.post(`${base_url}/api/users/login/`,data).then(res=>{
-            dispatch({
-                type:LOGIN,
-                payload:res.data
-            })
-        }).catch(err => {
-            stopLoading()
-            setError(err.message,"danger")
-        });
+            if(Object.keys(res.data).includes("error")){
+                stopLoading()
+                dispatch({
+                    type:FAILED_LOGIN
+                })
+                setError(res.data.error,"danger")
+            } else {
+                console.log("loggingin")
+                dispatch({
+                    type:LOGIN,
+                    payload:res.data
+                })
+            } 
+        })
     }
 
     const logout = () => {
@@ -283,7 +281,6 @@ const DataState = props => {
             setError,
             setTitle,
             setText,
-            getData,
             getHistoricals,
             getIterations,
             getOrders,

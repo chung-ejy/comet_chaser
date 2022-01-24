@@ -1,9 +1,9 @@
-import React, { Component , useContext} from 'react'
+import React, { useContext} from 'react'
 import { Link } from 'react-router-dom'
 import DataContext from '../../context/data/dataContext'
 const Header = () => {
     const dataContext = useContext(DataContext)
-    const {isAuth,loading,user,logout} = dataContext
+    const {isAuth,user,logout} = dataContext
 
     const onClick = (e) => {
         logout()
@@ -11,7 +11,7 @@ const Header = () => {
     const authLinks = (
     <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
         <span className="navbar-text mr-3">
-        <strong>{user ? `Welcome ${user.username}` : ''}</strong>
+        <strong>{user != null ? `Welcome ${user.username}` : ''}</strong>
         </span>
         <li className="nav-item">
             <Link to="/backtest" className="nav-link">

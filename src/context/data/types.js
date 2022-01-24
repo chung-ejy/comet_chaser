@@ -16,5 +16,7 @@ export const SET_PRODUCT = "SET_PRODUCT"
 export const GET_BACKTEST = "GET_BACKTEST"
 export const GET_SYMBOLS = "GET_SYMBOLS"
 export const REGISTER = 'REGISTER'
+export const FAILED_REGISTER = 'FAILED_REGISTER'
 export const LOGIN = 'LOGIN'
+export const FAILED_LOGIN = 'FAILED_LOGIN'
 export const LOGOUT = 'LOGOUT'

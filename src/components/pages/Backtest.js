@@ -9,12 +9,10 @@ import AnalysisViz from '../data/AnalysisViz';
 const Backtest = () => {
     const dataContext = useContext(DataContext)
     const [state,setState] = useState({"product":"test","table":"iterations"})
-    const {data,loading,title,text,
-            getHistoricals,getTradeParams,getFills,getOrders,getIterations,getTrades
-                            ,setProduct
-                            ,getCloudErrors,getSymbols,symbols
+    const {loading,title
+                            ,setProduct,getSymbols
                         } = dataContext;
-    const {table,product} = state
+    const {product} = state
     useEffect(() => {
         getSymbols()
     },//eslint-disable-next-line

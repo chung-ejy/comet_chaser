@@ -20,16 +20,7 @@ const BackTestForm = () => {
         }
     )
     const  {           
-        retrack_days,
-        signal,
-        req,
-        entry_strategy,
-        exit_strategy,
-        value,
-        conservative,
         symbols,
-        start,
-        end
     } = state;
 
     const onSymbol = (e) => {
