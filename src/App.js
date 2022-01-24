@@ -11,7 +11,7 @@ import Alert from './components/alerts/Alert'
 import Backtest from './components/pages/Backtest'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
-
+import Profile from './components/pages/Profile'
 export const App = () => {
     return (
         <DataState>
@@ -21,6 +21,7 @@ export const App = () => {
                 <Alert />
                 <Routes>
                     <Route exact path ="/" element={<Landing />} />
+                    <Route exact path ="/profile" element={<Profile />} />
                     <Route exact path ="/dashboard" element={<Dashboard />} />
                     <Route exact path="/register" element={<Register/>} /> 
                     <Route exact path="/login" element={<Login/>} /> 

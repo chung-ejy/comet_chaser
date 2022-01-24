@@ -1,6 +1,7 @@
 import React, { useContext} from 'react'
 import { Link } from 'react-router-dom'
 import DataContext from '../../context/data/dataContext'
+import Profile from '../../components/pages/Profile'
 const Header = () => {
     const dataContext = useContext(DataContext)
     const {isAuth,user,logout} = dataContext
@@ -13,6 +14,11 @@ const Header = () => {
         <span className="navbar-text mr-3">
         <strong>{user != null ? `Welcome ${user.username}` : ''}</strong>
         </span>
+        <li className="nav-item">
+            <Link to="/profile" className="nav-link">
+            Profile
+            </Link>
+        </li>
         <li className="nav-item">
             <Link to="/backtest" className="nav-link">
             Backtest
