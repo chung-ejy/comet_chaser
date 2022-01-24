@@ -21,7 +21,8 @@ import {
         GET_USER,
         GET_SYMBOLS,
         UPDATE_TRADE_PARAMS,
-        GET_BOT_STATUS} from "./types";
+        GET_BOT_STATUS,
+        UPDATE_BOT_STATUS} from "./types";
 
 import React, { useReducer } from "react";
 import DataContext from "./dataContext"
@@ -48,7 +49,7 @@ const DataState = props => {
         error:null,
         loading:false
     }
-    const base_url = "https://cometchaserapi.herokuapp.com"
+    const base_url = "http://localhost:8000"
     const [state,dispatch] = useReducer(dataReducer,initialState)
 
     const setError = (msg,type) => {
@@ -130,11 +131,9 @@ const DataState = props => {
     const updateBotStatus = (params) => { 
         setLoading()
         params["username"] = state.user.username
-        params[state.product] = !state.product
-        console.log(params)
         axios.put(`${base_url}/api/roster/`,{params:params}).then(res=>{
             dispatch({
-                type:UPDATE_TRADE_PARAMS,
+                type:UPDATE_BOT_STATUS,
                 payload:res.data
             })
         }).catch(err => {

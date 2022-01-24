@@ -46,16 +46,15 @@ const Profile = () => {
     }
 
     const onBigClick = (e) => {
-        if (bot_status[product]){
-            console.log("shuttingdown!",product)
-            updateBotStatus({"version":product})
-            // setState({...state,["product"]:"live"})
-            // setProduct("live")
+        console.log("clicked!",product)
+        if (product === "test") {
+            updateBotStatus({"test":!bot_status[product]})
         } else {
-            // setState({...state,["product"]:"test"})
-            // setProduct("test")
-            console.log("turningon!",product)
+            updateBotStatus({"live":!bot_status[product]})
         }
+        
+        // setState({...state,["product"]:"live"})
+        // setProduct("live"
         
     }
 
