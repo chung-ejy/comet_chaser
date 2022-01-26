@@ -1,4 +1,4 @@
-import React, { useContext,useState,useEffect } from 'react'
+import React, { useContext,useState } from 'react'
 import DataContext from '../../context/data/dataContext'
 
 const TradeParamForm = () => {
@@ -24,7 +24,7 @@ const TradeParamForm = () => {
 
     const onRadio = (e) => {
         e.preventDefault()
-        if (state[e.target.name]==false){
+        if (state[e.target.name]===false){
             setState({...state,[e.target.name]:true})
         } else {
             setState({...state,[e.target.name]:false})
@@ -37,7 +37,7 @@ const TradeParamForm = () => {
     }
     const entries = ["standard","parameter_defined","all"]
     const exits = ["due_date","hold","adaptive_hold","adaptive_due_date"]
-    return (loading || !isAuth || available_symbols == null || whitelist_symbols == null ? "" :
+    return (loading || !isAuth || available_symbols === null || whitelist_symbols === null ? "" :
         <div className="card card-body mt-4 mb-4">
             <div className="row mt-2">
             <form className="col"onSubmit={onSubmit}>
@@ -55,7 +55,7 @@ const TradeParamForm = () => {
             <div className="form-group row mt-2">
             {["value","conservative"].map(key => ( 
                                 <div className="col">
-                                   <button onClick={onRadio} name={key} class={`btn btn-${state[key] == false ? "danger" : "primary"} form-control`}>{key}</button>
+                                   <button onClick={onRadio} name={key} className={`btn btn-${state[key] === false ? "danger" : "primary"} form-control`}>{key}</button>
                                </div>))}
             </div>
             {/* strategies */}
@@ -64,7 +64,7 @@ const TradeParamForm = () => {
                 <div className="col">
                         <label className="col-form-label">{key}</label>
                         <select placeholder="strategy" name={key} onChange={onChange} className="form-control">
-                        {key == "entry_strategy" ? entries.map(entry=> <option key={entry}>{entry}</option>) : 
+                        {key === "entry_strategy" ? entries.map(entry=> <option key={entry}>{entry}</option>) : 
                         exits.map(entry=> <option key={entry}>{entry}</option>)}
                         </select>
                 </div>
@@ -83,7 +83,7 @@ const TradeParamForm = () => {
             </div> 
                 <div className="form-group row mt-2">
                     <div className="col">
-                    <button type="submit" class="btn btn-primary form-control col">Update</button>
+                    <button type="submit" className="btn btn-primary form-control col">Update</button>
                     </div>
                 </div>
             </form>

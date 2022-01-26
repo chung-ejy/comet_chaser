@@ -1,8 +1,6 @@
 import React, {useContext,useEffect,Fragment,useState} from 'react';
 import DataContext from "../../context/data/dataContext"
 import Alert from "../alerts/Alert"
-// import Sentiment from '../sentiment/Sentiment';
-// import Form from '../data/Form';
 import IterationTable from '../data/IterationTable';
 import HistoricalTable from '../data/HistoricalTable';
 import OrderTable from '../data/OrderTable';
@@ -25,13 +23,15 @@ const Dashboard = () => {
     useEffect(() => {
         if (user!=null && isAuth) {
             getTradeParams()
-            getHistoricals()
             getIterations()
+            getOrders()
+            getHistoricals()
             getTrades()
             getCloudErrors()
-            getOrders()
         } else {
-            loadUser()
+            if (isAuth) {
+                loadUser()
+            }
         }
     },//eslint-disable-next-line
     [user,isAuth,product]
@@ -80,11 +80,11 @@ const Dashboard = () => {
                         </h3>
                     </Fragment>) : !isAuth ? (<Navigate to="/"/>) : (
                         <Fragment>
-                            <button type="button" onClick={onIteration} class="btn btn-primary m-2">iterations</button>
-                            <button type="button" onClick={onHistorical} class="btn btn-primary m-2">historicals</button>
-                            <button type="button" onClick={onOrder} class="btn btn-primary m-2">orders</button>
-                            <button type="button" onClick={onTrade} class="btn btn-primary m-2">trades</button>
-                            <button type="button" onClick={onError} class="btn btn-primary m-2">errors</button>
+                            <button type="button" onClick={onIteration} className="btn btn-primary m-2">iterations</button>
+                            <button type="button" onClick={onHistorical} className="btn btn-primary m-2">historicals</button>
+                            <button type="button" onClick={onOrder} className="btn btn-primary m-2">orders</button>
+                            <button type="button" onClick={onTrade} className="btn btn-primary m-2">trades</button>
+                            <button type="button" onClick={onError} className="btn btn-primary m-2">errors</button>
                             {table === "orders" ? <OrderTable /> : table === "iterations" ? 
                             <Fragment> 
                                 <TradeParams /> 

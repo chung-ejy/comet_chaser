@@ -2,7 +2,7 @@
    
 import React, { useState, Fragment, useContext } from 'react'
 import DataContext from '../../context/data/dataContext'
-import { VictoryLine, VictoryChart,VictoryZoomContainer, VictoryAxis} from 'victory'
+import { VictoryLine, VictoryChart,VictoryZoomContainer } from 'victory'
 const AnalysisViz = () => {
     const dataContext = useContext(DataContext)
     const {analysis,loading} = dataContext
@@ -14,7 +14,7 @@ const AnalysisViz = () => {
         <div className="card card-body mt-4 mb-4">
             {analysis.length < 1 ? <div></div> :
             <Fragment>
-            <h5 class="card-title text-center mb-1">
+            <h5 className="card-title text-center mb-1">
             Performance
             </h5>
 

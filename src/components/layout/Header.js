@@ -1,7 +1,6 @@
 import React, { useContext} from 'react'
 import { Link } from 'react-router-dom'
 import DataContext from '../../context/data/dataContext'
-import Profile from '../../components/pages/Profile'
 const Header = () => {
     const dataContext = useContext(DataContext)
     const {isAuth,user,logout} = dataContext
@@ -40,11 +39,16 @@ const Header = () => {
     const guestLinks = (
         <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
         <li className="nav-item">
+            <Link to="/" className="nav-link">
+            Home
+            </Link>
+        </li> 
+        <li className="nav-item">
             <Link to="/backtest" className="nav-link">
             Backtest
             </Link>
         </li> 
-        <li className="nav-item">
+        {/* <li className="nav-item">
             <Link to="/register" className="nav-link">
             Register
             </Link>
@@ -53,7 +57,7 @@ const Header = () => {
             <Link to="/login" className="nav-link">
             Login
             </Link>
-        </li> 
+        </li>  */}
         </ul>
     );
     
