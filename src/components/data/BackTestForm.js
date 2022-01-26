@@ -42,7 +42,6 @@ const BackTestForm = () => {
         } else {
             setState({...state,[e.target.name]:false})
         }
-        console.log(state)
         
     }
     const onSubmit = (e) => {
@@ -59,26 +58,33 @@ const BackTestForm = () => {
             <h5>Backtest Parameters</h5>
             <div className="form-group row mt-2">
                 {["retrack_days","signal","req","positions"].map( key =>
-                        (<div className="col">
-                        <label className="col-form-label" htmlFor="formRange">{`${key}: ${state[key]} `}</label>
+                        (<div key={key} className="col">
+                        <label className="col-form-label" htmlFor="formRange">
+                            {`${key}: ${state[key]} `}</label>
                         <input onChange={onChange} className="form-range"
-                            name={key} placeholder={key} type="range" step="1" min="1" max="10" value={state[key]} />
+                            name={key} placeholder={key} type="range" 
+                            step="1" min="1" max="10" value={state[key]} />
                         </div>))}
             </div> 
             {/* booleans */}
             <div className="form-group row mt-2">
             {["value","conservative"].map(key => ( 
-                                <div className="col">
-                                   <button onClick={onRadio} name={key} className={`btn btn-${state[key] == false ? "danger" : "primary"} form-control`}>{key}</button>
+                                <div key={key} className="col">
+                                   <button onClick={onRadio} name={key} 
+                                   className={`btn btn-${state[key] == false 
+                                   ? "danger" : "primary"} form-control`}>{key}
+                                   </button>
                                </div>))}
             </div>
             {/* strategies */}
             <div className="form-group row mt-2">
             {["entry_strategy","exit_strategy"].map(key => (
-                <div className="col">
+                <div key={key} className="col">
                         <label className="col-form-label">{key}</label>
-                        <select placeholder="strategy" name={key} onChange={onChange} className="form-control">
-                        {key == "entry_strategy" ? entries.map(entry=> <option key={entry}>{entry}</option>) : 
+                        <select placeholder="strategy" name={key} onChange={onChange} 
+                        className="form-control">
+                        {key == "entry_strategy" ? entries.map(entry=> 
+                        <option key={entry}>{entry}</option>) : 
                         exits.map(entry=> <option key={entry}>{entry}</option>)}
                         </select>
                 </div>
@@ -89,7 +95,8 @@ const BackTestForm = () => {
             {["start","end"].map(key =>
                     (<div key={key} className="col">
                     <label className="col-form-label">{key}</label>
-                    <input className="form-control" onChange={onChange} type="datetime-local" 
+                    <input className="form-control" onChange={onChange} 
+                    type="datetime-local" 
                         name={key} value={state[key]}
                         min="2021-01-01T00:00" max="2022-01-01T00:00" /> 
                     </div> ))}
@@ -99,22 +106,26 @@ const BackTestForm = () => {
             <div key={"symbols"} className="form-group row mt-2">
                 <div key={"symbols"} className="col ml-3">
                     <label className="col-form-label">Add Crypto</label>
-                    <select placeholder="ALL" name={"symbols"} onChange={onSymbol} className="form-control">
-                    {available_symbols.map(symbol=> <option key={symbol} value={symbol}>{symbol}</option>)}
+                    <select placeholder="ALL" name={"symbols"} onChange={onSymbol} 
+                    className="form-control">
+                    {available_symbols.map(symbol=> <option key={symbol} 
+                    value={symbol}>{symbol}</option>)}
                     <option key ={"ALL"}>ALL</option>
                     </select>
                 </div>
             </div> 
                 <div className="form-group row mt-2">
                     <div className="col">
-                    <button type="submit" className="btn btn-primary form-control col">Backtest</button>
+                    <button type="submit" className="btn btn-primary form-control col">
+                        Backtest</button>
                     </div>
                 </div>
             </form>
             <div className="col">
                 <h5>Included Crypto</h5>
                 <ul>
-                {symbols.map(symbol => <li className="list-group-item" onClick={onDeleteSymbol} value={symbol} >{symbol}</li>)}
+                {symbols.map(symbol => <li className="list-group-item" 
+                onClick={onDeleteSymbol} key={symbol} value={symbol} >{symbol}</li>)}
                 </ul>
             </div>
             </div>

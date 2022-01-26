@@ -20,10 +20,10 @@ const TradeTable = () => {
                         <th className="d-none d-lg-table-cell">buy_price</th>
                     </tr>
                     {trades.map(row => 
-                        (<tr>
+                        (<tr key={row["date"] + row["status"]}>
                         {Object.keys(row).map(key => ["date","product_id","status"].includes(key) ? 
-                                    <td>{row[key]}</td> :
-                                    <td className="d-none d-lg-table-cell">{row[key]}</td> )}
+                                    <td key={key}>{row[key]}</td> :
+                                    <td key={key} className="d-none d-lg-table-cell">{row[key]}</td> )}
                         </tr>)
                     )}
                 </tbody>

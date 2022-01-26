@@ -20,9 +20,10 @@ const OrderTable = () => {
                         <th className="d-none d-lg-table-cell">size</th>
                     </tr>
                     {orders.map(row => 
-                        (<tr>
-                        {Object.keys(row).map(key => ["product_id","status","side"].includes(key) ? <td>{row[key]}</td> : 
-                        <td className="d-none d-lg-table-cell">{row[key]}</td>)}
+                        (<tr key={row["created_at"]}>
+                        {Object.keys(row).map(key => ["product_id","status","side"].includes(key) 
+                        ? <td key={key}>{row[key]}</td> : 
+                        <td key={key} className="d-none d-lg-table-cell">{row[key]}</td>)}
                         </tr>)
                     )}
                 </tbody>

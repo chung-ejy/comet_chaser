@@ -11,13 +11,15 @@ const BacktestTable = () => {
             <table className="table table-responsive-sm">
             <thead>
                     <tr>
-                        {included_columns.map(col => <th>{col}</th>)}
+                        {included_columns.map(col => <th key={col}>{col}</th>)}
                     </tr>
                     </thead>
                     <tbody>
                     {backtest.map(row => 
                         (<tr>
-                        {included_columns.map(key => ["buy_price","sell_price","delta"].includes(key) ? <td>{row[key].toFixed(2)}</td> : <td>{row[key]}</td>)}
+                        {included_columns.map(key => ["buy_price","sell_price","delta"].includes(key) 
+                        ? <td key={key}>{row[key].toFixed(2)}</td> 
+                        : <td key={key}>{row[key]}</td>)}
                         </tr>)
                     )}
                 </tbody>

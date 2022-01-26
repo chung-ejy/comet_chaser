@@ -25,9 +25,9 @@ const Dashboard = () => {
             getTradeParams()
             getIterations()
             getOrders()
-            getHistoricals()
+            // getHistoricals()
             getTrades()
-            getCloudErrors()
+            // getCloudErrors()
         } else {
             if (isAuth) {
                 loadUser()
@@ -51,9 +51,9 @@ const Dashboard = () => {
         setState({...state,["table"]:"orders"})
     }
 
-    const onHistorical = (e) => {
-        setState({...state,["table"]:"historicals"})
-    }
+    // const onHistorical = (e) => {
+    //     setState({...state,["table"]:"historicals"})
+    // }
 
     const onIteration = (e) => {
         setState({...state,["table"]:"iterations"})
@@ -63,9 +63,9 @@ const Dashboard = () => {
         setState({...state,["table"]:"trades"})
     }
 
-    const onError = (e) => {
-        setState({...state,["table"]:"errors"})
-    }
+    // const onError = (e) => {
+    //     setState({...state,["table"]:"errors"})
+    // }
 
     return (<div className='card text-center'>
                 <div className='card-body'>
@@ -81,16 +81,19 @@ const Dashboard = () => {
                     </Fragment>) : !isAuth ? (<Navigate to="/"/>) : (
                         <Fragment>
                             <button type="button" onClick={onIteration} className="btn btn-primary m-2">iterations</button>
-                            <button type="button" onClick={onHistorical} className="btn btn-primary m-2">historicals</button>
+                            {/* <button type="button" onClick={onHistorical} className="btn btn-primary m-2">historicals</button> */}
                             <button type="button" onClick={onOrder} className="btn btn-primary m-2">orders</button>
                             <button type="button" onClick={onTrade} className="btn btn-primary m-2">trades</button>
-                            <button type="button" onClick={onError} className="btn btn-primary m-2">errors</button>
+                            {/* <button type="button" onClick={onError} className="btn btn-primary m-2">errors</button> */}
                             {table === "orders" ? <OrderTable /> : table === "iterations" ? 
                             <Fragment> 
                                 <TradeParams /> 
                                 <IterationTable />
                             </Fragment>
-                            : table === "historicals"? <HistoricalTable /> : table==="errors"? <ErrorTable></ErrorTable> : <TradeTable></TradeTable> }
+                            // : table === "historicals"? <HistoricalTable /> 
+                            // : table==="errors"? <ErrorTable></ErrorTable> 
+                            : <TradeTable></TradeTable> 
+                            }
                         </Fragment>
                     )
                 }

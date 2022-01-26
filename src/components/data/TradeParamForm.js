@@ -40,12 +40,12 @@ const TradeParamForm = () => {
     return (loading || !isAuth || available_symbols === null || whitelist_symbols === null ? "" :
         <div className="card card-body mt-4 mb-4">
             <div className="row mt-2">
-            <form className="col"onSubmit={onSubmit}>
+            <form className="col" onSubmit={onSubmit}>
             {/* numericals */}
             <h5>Backtest Parameters</h5>
             <div className="form-group row mt-2">
                 {["retrack_days","signal","req","positions"].map( key =>
-                        (<div className="col">
+                        (<div className="col" key={key}>
                         <label className="col-form-label" htmlFor="formRange">{`${key}: ${state[key]} `}</label>
                         <input onChange={onChange} className="form-range"
                             name={key} placeholder={key} type="range" step="1" min="1" max="14" value={state[key]} />
@@ -54,14 +54,14 @@ const TradeParamForm = () => {
             {/* booleans */}
             <div className="form-group row mt-2">
             {["value","conservative"].map(key => ( 
-                                <div className="col">
+                                <div className="col" key={key}>
                                    <button onClick={onRadio} name={key} className={`btn btn-${state[key] === false ? "danger" : "primary"} form-control`}>{key}</button>
                                </div>))}
             </div>
             {/* strategies */}
             <div className="form-group row mt-2">
             {["entry_strategy","exit_strategy"].map(key => (
-                <div className="col">
+                <div className="col" key={key}>
                         <label className="col-form-label">{key}</label>
                         <select placeholder="strategy" name={key} onChange={onChange} className="form-control">
                         {key === "entry_strategy" ? entries.map(entry=> <option key={entry}>{entry}</option>) : 
@@ -90,7 +90,7 @@ const TradeParamForm = () => {
             <div className="col">
                 <h5>Included Crypto</h5>
                 <ul>
-                {whitelist_symbols.map(symbol => <li className="list-group-item" onClick={onDeleteSymbol} value={symbol} >{symbol}</li>)}
+                {whitelist_symbols.map(symbol => <li className="list-group-item" onClick={onDeleteSymbol} key={symbol} value={symbol} >{symbol}</li>)}
                 </ul>
             </div>
             </div>
