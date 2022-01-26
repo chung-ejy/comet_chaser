@@ -57,9 +57,9 @@ const DataState = props => {
             type:SET_ERROR,
             payload: {msg,type}
         })
-        setTimeout(()=> {
-            clearError()
-        },5000);
+        // setTimeout(()=> {
+        //     clearError()
+        // },5000);
     }
     const clearError = () => {
         dispatch({

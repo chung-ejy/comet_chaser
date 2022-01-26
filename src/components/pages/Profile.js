@@ -1,6 +1,5 @@
 import React, {useContext,useEffect,Fragment,useState} from 'react';
 import DataContext from "../../context/data/dataContext"
-import Alert from "../alerts/Alert"
 // import Sentiment from '../sentiment/Sentiment';
 // import Form from '../data/Form';
 import { Navigate } from 'react-router-dom';
@@ -10,18 +9,17 @@ import TradeParamForm from '../data/TradeParamForm';
 const Profile = () => {
     const dataContext = useContext(DataContext)
     const [state,setState] = useState({"product":"test"})
-    const {loading,title,
-            getHistoricals,getTradeParams,getOrders,getIterations,getTrades, loadUser
-                            ,setProduct
-                            ,getCloudErrors
-                            ,isAuth
-                            ,user
-                            ,getBotStatus
-                            ,bot_status
-                            ,trade_params
-                            ,getSymbols
-                            ,updateBotStatus
-                        } = dataContext;
+    const {loading,title
+            ,getTradeParams
+            ,loadUser
+            ,setProduct
+            ,isAuth
+            ,user
+            ,getBotStatus
+            ,bot_status
+            ,getSymbols
+            ,updateBotStatus
+            } = dataContext;
     const {product} = state
     useEffect(() => {
         if (user!=null && isAuth) {
@@ -29,7 +27,9 @@ const Profile = () => {
             getBotStatus()
             getSymbols()
         } else {
-            loadUser()
+            if (isAuth) {
+                loadUser()
+            }
         }
     },//eslint-disable-next-line
     [user,product,isAuth]
@@ -72,7 +72,7 @@ const Profile = () => {
                         <Fragment>
                         <TradeParams />
                         <TradeParamForm />
-                        <button type="button" onClick={onBigClick} class="btn btn-primary">
+                        <button type="button" onClick={onBigClick} className="btn btn-primary">
                             {bot_status !== null ? bot_status[product] ? " SHUTDOWN" : " TURNON" : ""}
                         </button>
                         <div></div>

@@ -1,13 +1,10 @@
-import React, { Fragment ,useState} from 'react'
-import ReactDOM from 'react-dom'
-import {Switch} from 'react-router'
-import { HashRouter as Router, Route, Routes, Redirect} from 'react-router-dom'
+import React from 'react'
+import { HashRouter as Router, Route, Routes } from 'react-router-dom'
 import DataState from "./context/data/dataState"
 import Header from "./components/layout/Header"
 import Footer from "./components/layout/Footer"
 import Dashboard from "./components/pages/Dashboard"
 import Landing from "./components/pages/Landing"
-import Alert from './components/alerts/Alert'
 import Backtest from './components/pages/Backtest'
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
@@ -18,7 +15,7 @@ export const App = () => {
             <Router>
             <Header />
             <div className="container-sm align-middle text-center">
-                <Alert />
+                {/* <Alert /> */}
                 <Routes>
                     <Route exact path ="/" element={<Landing />} />
                     <Route exact path ="/profile" element={<Profile />} />

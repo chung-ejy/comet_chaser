@@ -9,14 +9,14 @@ const BackTestForm = () => {
             retrack_days:3,
             signal: 3,
             req:1,
+            positions:1,
             entry_strategy: "all",
             exit_strategy: "adaptive_hold",
             value: false,
             conservative: true,
             symbols:["ALL"],
             start:"2021-01-01T00:00",
-            end: "2022-01-01T00:00"
-            
+            end: "2022-01-01T00:00"          
         }
     )
     const  {           
@@ -49,7 +49,7 @@ const BackTestForm = () => {
         e.preventDefault()
         getBacktest(state)
     }
-    const entries = ["standard","parameter_defined","all"]
+    const entries = ["standard","signal_based","parameter_defined","all"]
     const exits = ["due_date","hold","adaptive_hold","adaptive_due_date"]
     return (
         <div className="card card-body mt-4 mb-4">
@@ -58,18 +58,18 @@ const BackTestForm = () => {
             {/* numericals */}
             <h5>Backtest Parameters</h5>
             <div className="form-group row mt-2">
-                {["retrack_days","signal","req"].map( key =>
+                {["retrack_days","signal","req","positions"].map( key =>
                         (<div className="col">
                         <label className="col-form-label" htmlFor="formRange">{`${key}: ${state[key]} `}</label>
                         <input onChange={onChange} className="form-range"
-                            name={key} placeholder={key} type="range" step="1" min="1" max="14" value={state[key]} />
+                            name={key} placeholder={key} type="range" step="1" min="1" max="10" value={state[key]} />
                         </div>))}
             </div> 
             {/* booleans */}
             <div className="form-group row mt-2">
             {["value","conservative"].map(key => ( 
                                 <div className="col">
-                                   <button onClick={onRadio} name={key} class={`btn btn-${state[key] == false ? "danger" : "primary"} form-control`}>{key}</button>
+                                   <button onClick={onRadio} name={key} className={`btn btn-${state[key] == false ? "danger" : "primary"} form-control`}>{key}</button>
                                </div>))}
             </div>
             {/* strategies */}
@@ -107,7 +107,7 @@ const BackTestForm = () => {
             </div> 
                 <div className="form-group row mt-2">
                     <div className="col">
-                    <button type="submit" class="btn btn-primary form-control col">Backtest</button>
+                    <button type="submit" className="btn btn-primary form-control col">Backtest</button>
                     </div>
                 </div>
             </form>

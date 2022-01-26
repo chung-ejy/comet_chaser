@@ -1,6 +1,5 @@
 import React, {useContext,useEffect,Fragment,useState} from 'react';
 import DataContext from "../../context/data/dataContext"
-import Alert from "../alerts/Alert"
 // import Sentiment from '../sentiment/Sentiment';
 // import Form from '../data/Form';
 import BackTestForm from '../data/BackTestForm';
@@ -8,9 +7,10 @@ import BacktestTable from '../data/BacktestTable';
 import AnalysisViz from '../data/AnalysisViz';
 const Backtest = () => {
     const dataContext = useContext(DataContext)
-    const [state,setState] = useState({"product":"test","table":"iterations"})
-    const {loading,title
-                            ,setProduct,getSymbols
+    const [state,setState] = useState({"product":"test"})
+    const {loading
+            ,setProduct
+            ,getSymbols
                         } = dataContext;
     const {product} = state
     useEffect(() => {
@@ -31,11 +31,10 @@ const Backtest = () => {
 
     return (<div className='card text-center'>
                 <div className='card-body'>
-                             <Alert />
                             <h1 onClick={onClick}className="card-title justify-content-center">
                                 Backtesting Dashboard
                             </h1>
-                {loading || title.size < 1 ? (
+                {loading ? (
                     <Fragment>
                         <h3 className="text-center m-3">
                             <i className="fas fa-spinner text-primary fa-7x"></i>
