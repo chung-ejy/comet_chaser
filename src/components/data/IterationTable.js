@@ -18,9 +18,6 @@ const IterationTable = () => {
                         <th className="d-none d-lg-table-cell" scope="col">conservative</th>
                         <th className="d-none d-lg-table-cell" scope="col">entry</th>
                         <th className="d-none d-lg-table-cell" scope="col">exit</th>
-                        {/* <th>fee</th>
-                        <th>minimum_rows</th>
-                        <th>live</th> */}
                         <th scope="col" className="d-none d-lg-table-cell">sleep_time</th>
                         <th scope="col" className="d-none d-lg-table-cell">status</th>
                     </tr>
@@ -28,8 +25,12 @@ const IterationTable = () => {
                     <tbody>
                     
                    {iterations.map(row => 
-                        (<tr>
-                        {Object.keys(row).map(key => ["retrack_days","value","conservative","entry_strategy","exit_strategy","sleep_time","status"].includes(key) ? <td className="d-none d-lg-table-cell">{row[key]}</td> : <td>{row[key]}</td>)}
+                        (<tr key={row["date"]}>
+                        {Object.keys(row).map(key => ["retrack_days","value"
+                        ,"conservative","entry_strategy"
+                        ,"exit_strategy","sleep_time","status"].includes(key) 
+                        ? <td key={key} className="d-none d-lg-table-cell">
+                            {row[key]}</td> : <td key={key}>{row[key]}</td>)}
                         </tr>))
                     }
                 </tbody>
