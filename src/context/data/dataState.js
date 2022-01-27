@@ -50,7 +50,7 @@ const DataState = props => {
         error:null,
         loading:false
     }
-    const base_url = "https://localhost:8000"
+    const base_url = "http://localhost:8000"
     const [state,dispatch] = useReducer(dataReducer,initialState)
 
     const setError = (msg,type) => {
@@ -58,9 +58,6 @@ const DataState = props => {
             type:SET_ERROR,
             payload: {msg,type}
         })
-        // setTimeout(()=> {
-        //     clearError()
-        // },5000);
     }
     const clearError = () => {
         dispatch({

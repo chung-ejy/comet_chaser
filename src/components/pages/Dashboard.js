@@ -69,7 +69,7 @@ const Dashboard = () => {
 
     return (<div className='card text-center'>
                 <div className='card-body'>
-                             <Alert />
+                             {/* <Alert /> */}
                             <h1 onClick={onClick}className="card-title justify-content-center">
                                 {product[0].toUpperCase() + product.slice(1) + " Dashboard"}
                             </h1>
