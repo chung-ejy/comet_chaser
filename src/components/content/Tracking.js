@@ -6,7 +6,7 @@ const Tracking = () => {
                             <h1 className="card-title justify-content-center">
                                 Tracking
                             </h1>
-                        <p className="text-right">
+                        <p className="lead text-right">
                             Wow you deployed your first bot and its lit. First off you can switch between the test and live view to check the progress
                             of your test bot and your live bot. You have three views that you can check out. Iterations show's you the trade parameters
                             you defined and information on the different analysis runs your bot ran. Your bot will analyze the market every hour with 

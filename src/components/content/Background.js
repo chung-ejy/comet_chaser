@@ -6,7 +6,7 @@ const Background = () => {
                             <h1 className="card-title justify-content-center">
                                 Background
                             </h1>
-                        <p className="text-right">
+                        <p className="lead text-right">
                             Alittle bit about me, COMET. I implement a trading strategy based off historical trends and quantitative analysis. In the finance world,
                             we call this form of asset analysis as technical analysis. I do not take into account current news or intrinisic financial factors of a
                             given crypto currency. Instead, I speculate on price and hope to capture investor sentiment and behavior through numbers. The advantage to my 

@@ -20,7 +20,7 @@ export const App = () => {
                 <Routes>
                     <Route exact path ="/" element={<Landing />} />
                     <Route exact path ="/profile" element={<Profile />} />
-                    <Route exact path ="/dashboard" element={<Dashboard />} />
+                    <Route exact path ="/tracking" element={<Dashboard />} />
                     <Route exact path ="/onboarding" element={<Onboarding />} />
                     <Route exact path="/register" element={<Register/>} /> 
                     <Route exact path="/login" element={<Login/>} /> 

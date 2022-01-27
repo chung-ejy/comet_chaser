@@ -4,9 +4,9 @@ const Deploying = () => {
     return (<div className='card'>
                 <div className='card-body justify-content-left'>
                             <h1 className="card-title justify-content-center">
-                                Deployuing
+                                Deploying
                             </h1>
-                        <p className="text-right">
+                        <p className="lead text-right">
                             Now head on over to the profile tab. You will see your current trade parameters, a form to update your parameters, and the apikey update form.
                             If you ever want to change your api keys utilize the apikey form to update them! If you ever want to change your trade parameters, use 
                             the trade parameter form to update them. When you started your account, we provided research based parameters that have performed well 

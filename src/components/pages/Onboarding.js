@@ -19,7 +19,7 @@ const Onboarding = () => {
                         Onboarding
                     </h1>
                     <div className="row">
-                        <div className="col col-3">
+                        <div className="col col-1">
                     <ul className="nav nav-pills flex-column nav-fill">
                         {pages.map(page => 
                         <a class="list-group-item list-group-item-action" name={page} onClick={onClick} key={page}className="nav-item">
@@ -28,7 +28,7 @@ const Onboarding = () => {
                         )}
                     </ul>
                     </div>
-                    <div className="col col-7">
+                    <div className="col col-11">
                         { state === "connect" ? <Connecting /> :
                         state === "background" ? <Background /> :
                         state === "backtesting" ? <Backtesting /> :

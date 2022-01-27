@@ -6,7 +6,7 @@ const Intro = () => {
                             <h1 className="card-title justify-content-center">
                                 Introduction
                             </h1>
-                        <p className="text-right">
+                        <p className="lead text-right">
                             Wow, ya made it to onboarding! The following page will provide you information on CometChaser! Once you complete reading the
                             contents of this page, you will be able to understand the research behind my functionality, how to backtest a strategy with 
                             trade paraemters YOU defined. How to connect your coinbase pro account to my brain, how to deploy both a test and
