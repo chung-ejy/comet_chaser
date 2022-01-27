@@ -1,11 +1,11 @@
 import React, {useContext,useEffect,Fragment,useState} from 'react';
 import DataContext from "../../context/data/dataContext"
-import Alert from "../alerts/Alert"
+// import Alert from "../alerts/Alert"
 import IterationTable from '../data/IterationTable';
-import HistoricalTable from '../data/HistoricalTable';
+// import HistoricalTable from '../data/HistoricalTable';
 import OrderTable from '../data/OrderTable';
 import TradeTable from '../data/TradeTable'
-import ErrorTable from '../data/ErrorTable'
+// import ErrorTable from '../data/ErrorTable'
 import TradeParams from '../data/TradeParams'
 import { Navigate } from 'react-router-dom';
 
@@ -67,7 +67,7 @@ const Dashboard = () => {
     //     setState({...state,["table"]:"errors"})
     // }
 
-    return (<div className='card text-center'>
+    return (<div className='card text-center mt-5'>
                 <div className='card-body'>
                              {/* <Alert /> */}
                             <h1 onClick={onClick}className="card-title justify-content-center">

@@ -14,32 +14,37 @@ const Background = () => {
 
                             The key parameter that you the user define is when I buy an asset, my entry strategy, and when I sell an asset, my exit strategy.
                             Both of these strategies revolve around key technical values. The technical values that I look at to decide opportunities are below:
-
-                            Technical Values:
-                            1) Signal: How much has the cryptocurrency price changed over the past couple of days (you the user define the number of days)
-                            2) Velocity: How quickly did the price change? This value is the percent change of the percent change, or the second derivative of price.
-                            3) Inflection: What is the concavity of the price change? Concavity tracks whether or not a price is increasing in velocity or decreasing in velocity. 
-                            A key indicator of inflection is whether or not the inflection value is changing from negative to positive or vice versa. Usually this signals that a
-                            cryptocurrency price is changing its trends.
-
-                            With all that in mind, the following are the various entry and exit strategies currently available in my brain.
-
-                            Entry Strategies:
-                            1) Standard: I will buy a crypto if it falls or rises by a certain percentage defined by you.
-                            2) Signal-based: I will buy a crypto if the velocity and inflection values of a crypto are opposite one another.
-                            3) Parameter Defined: I will buy a cryptocurrency based on research defined analysis
-                            4) All: I will use all the strategies mentioned above and if all of their requirements are met I will buy a cryptocurrency.
-
-                            Exit Strategies:
-                            1) Hold: I will hold a cryptocurrency until it makes the required percentage gain defined by you.
-                            2) Due Date: I will hold a cryptocurrency until it either makes the required percentage gain or the due date defined by you is passed.
-                            3) Adaptive Hold: I will hold a cryptocurrency until research defined requirements are met and the cryptocurrency is at an ideal time to sell.
-                            4) Adaptive Due Date: I will  hold a cryptocurrency until research defined requirements are met and the cryptocurrency is at an ideal time to sell
-                            or until I run out of time. 
+                        </p>
+                        <br></br>
+                        <div className="row">
+                        <div className="card col-4 mb-3">
+                            <h5 className="mt-3">Technical Values:</h5>
+                            <ul className="list-unstyled">
+                            <li> <strong>Signal:</strong> Percentage change in price. This is the first derivative of price.</li>
+                            <li> <strong>Velocity:</strong> Rate of percentage change. This is the second derivative of price.</li>
+                            <li> <strong>Inflection:</strong> Concavity of Velocity. This is the third derivative of price.</li>
+                            <li>For additional information on derivatives check out this <a target="_blank" href="https://www.youtube.com/watch?v=WUvTyaaNkzM">link</a></li>
+                            </ul>
+                            </div>
+                            <div className="card col-4 mb-3">
+                            <h5 className="mt-3">Entry Strategies</h5>
+                            <ul className="list-unstyled">
+                            <li><strong>Standard: </strong>Buy if it falls or rises by a certain percentage.</li>
+                            <li> <strong>Signal-based: </strong>Buy if the velocity and inflection values of are opposite.</li>
+                            <li><strong>Parameter Defined: </strong>Buy based on research defined analysis</li>
+                            <li> <strong>All: </strong>Buy if all the above requirements are met</li>
+                            </ul>        </div>
+                            <div className="card col-4 mb-3">
+                            <h5 className="mt-3">Exit Strategies</h5>
+                            <ul className="list-unstyled">
+                            <li> <strong>Hold:</strong> Hold until the required percentage gain defined.</li>
+                            <li> <strong>Due Date:</strong>  Hold until the required percentage gain or the due date defined is passed.</li>
+                            <li> <strong>Adaptive Hold:</strong>  Hold until research defined requirements.</li>
+                            <li> <strong>Adaptive Due Date:</strong>  Hold using the adaptive strategy until I run out of time. </li>
+                            </ul></div>
+                        </div>
 
                             
-
-                            </p>
                         <br></br>
             </div>
         </div>

@@ -59,7 +59,7 @@ const Profile = () => {
         
     }
 
-    return (<div className='card text-center'>
+    return (<div className='card text-center mt-5'>
                 <div className='card-body'>
                     <h1 onClick={onClick}className="card-title justify-content-center">
                         {product[0].toUpperCase() + product.slice(1) + " BOT" }

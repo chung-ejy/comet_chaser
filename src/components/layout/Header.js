@@ -72,7 +72,7 @@ const Header = () => {
     );
     
         return (
-          <nav className="navbar navbar-expand-sm">
+          <nav className="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
             <div className="container">
               <button
                 className="navbar-toggler"

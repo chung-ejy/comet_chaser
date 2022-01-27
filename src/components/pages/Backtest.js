@@ -29,7 +29,7 @@ const Backtest = () => {
         
     }
 
-    return (<div className='card text-center'>
+    return (<div className='card text-center mt-5'>
                 <div className='card-body'>
                             <h1 onClick={onClick}className="card-title justify-content-center">
                                 Backtesting Dashboard
