@@ -1,5 +1,5 @@
 import React, { useContext} from 'react'
-import { Link, Navigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import DataContext from '../../context/data/dataContext'
 const Header = () => {
     const dataContext = useContext(DataContext)
@@ -72,7 +72,7 @@ const Header = () => {
     );
     
         return (
-          <nav className="navbar navbar-expand-sm navbar-dark bg-primary fixed-top">
+          <nav className="navbar navbar-expand-sm navbar-dark bg-primary fixed-top mb-5">
             <div className="container">
               <button
                 className="navbar-toggler"

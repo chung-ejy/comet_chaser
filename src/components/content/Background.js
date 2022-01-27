@@ -3,10 +3,10 @@ import React from 'react';
 const Background = () => {
     return (<div className='card'>
                 <div className='card-body justify-content-left'>
-                            <h1 className="card-title justify-content-center">
+                            <h1 className="card-title text-center">
                                 Background
                             </h1>
-                        <p className="lead text-right">
+                        <p className="lead m-3  text-right">
                             Alittle bit about me, COMET. I implement a trading strategy based off  <a target="_blank" href="https://www.investopedia.com/terms/t/technicalanalysis.asp">technical analysis</a>. 
                             I do not take into account current news or intrinisic financial factors of a
                             given crypto currency. Instead, I speculate on price and hope to capture investor sentiment and behavior through numbers. The advantage to my 

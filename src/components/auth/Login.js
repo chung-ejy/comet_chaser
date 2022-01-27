@@ -46,12 +46,12 @@ const Login = () => {
                     value={password}
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group text-center">
                     <button type="submit" className="btn btn-primary mt-3">
                     Login
                     </button>
                 </div>
-                <p>
+                <p className="text-center">
                     Don't have an account? <Link to="/register">Register</Link>
                 </p>
                 </form>

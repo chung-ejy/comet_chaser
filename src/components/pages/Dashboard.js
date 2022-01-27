@@ -70,7 +70,7 @@ const Dashboard = () => {
     return (<div className='card text-center mt-5'>
                 <div className='card-body'>
                              {/* <Alert /> */}
-                            <h1 onClick={onClick}className="card-title justify-content-center">
+                            <h1 onClick={onClick}className="card-title text-center">
                                 {"Comet " + product[0].toUpperCase() + product.slice(1) + " Dashboard"}
                             </h1>
                 {loading || title.size < 1 ? (

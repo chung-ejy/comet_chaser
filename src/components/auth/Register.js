@@ -72,12 +72,12 @@ const Register = () => {
                     value={password2}
                     />
                 </div>
-                <div className="form-group">
+                <div className="form-group text-center">
                     <button type="submit" className="btn btn-primary mt-3">
                     Register
                     </button>
                 </div>
-                <p>
+                <p className="text-center">
                     Already have an account? <Link to="/login">Login</Link>
                 </p>
                 </form>

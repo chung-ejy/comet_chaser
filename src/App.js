@@ -15,7 +15,7 @@ export const App = () => {
         <DataState>
             <Router>
             <Header />
-            <div className="container-sm align-middle text-center">
+            <div className="container-sm align-middle mb-5">
                 {/* <Alert /> */}
                 <Routes>
                     <Route exact path ="/" element={<Landing />} />

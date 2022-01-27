@@ -5,10 +5,10 @@ import Trades from '../../assets/onboarding/trades.PNG'
 const Tracking = () => {
     return (<div className='card'>
                 <div className='card-body justify-content-left'>
-                            <h1 className="card-title justify-content-center">
+                            <h1 className="card-title text-center">
                                 Tracking
                             </h1>
-                        <p className="lead">
+                        <p className="lead m-3 ">
                             Wow you deployed your first bot and its lit. You have three views that you can check out. 
                          </p>
                          <div className="card m-3">
@@ -42,7 +42,7 @@ const Tracking = () => {
                             <img src={Trades} className="img-fluid mt-3 mb-3 col-sm-6" alt="Responsive image"></img>
                             </div>
                             </div>
-                            <p className="lead">
+                            <p className="lead m-3 ">
                             AND THERE WE HAVE IT! Ya did it! You learned about technical crypto analysis, how to backtest a strategy, how to connect your
                             coinbase account, how to deploy a test and live bot, and how to keep track of it. You're now officially a bot manager! Have a blast bruh...
                             </p>
