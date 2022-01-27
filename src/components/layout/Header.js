@@ -14,13 +14,18 @@ const Header = () => {
         <strong>{user != null ? `Welcome ${user.username}` : ''}</strong>
         </span>
         <li className="nav-item">
+            <Link to="/onboarding" className="nav-link">
+            Onboarding
+            </Link>
+        </li>
+        <li className="nav-item">
             <Link to="/profile" className="nav-link">
             Profile
             </Link>
         </li>
         <li className="nav-item">
             <Link to="/backtest" className="nav-link">
-            Backtest
+            Backtesting
             </Link>
         </li>
         <li className="nav-item">
@@ -44,8 +49,13 @@ const Header = () => {
             </Link>
         </li> 
         <li className="nav-item">
+            <Link to="/onboarding" className="nav-link">
+            Onboarding
+            </Link>
+        </li>
+        <li className="nav-item">
             <Link to="/backtest" className="nav-link">
-            Backtest
+            Backtesting
             </Link>
         </li> 
         <li className="nav-item">
