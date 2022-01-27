@@ -22,7 +22,8 @@ import {
         GET_SYMBOLS,
         UPDATE_TRADE_PARAMS,
         GET_BOT_STATUS,
-        UPDATE_BOT_STATUS} from "./types";
+        UPDATE_BOT_STATUS,
+        UPDATE_KEYS} from "./types";
 
 import React, { useReducer } from "react";
 import DataContext from "./dataContext"
@@ -131,6 +132,7 @@ const DataState = props => {
     const updateBotStatus = (params) => { 
         setLoading()
         params["username"] = state.user.username
+        params["data_request"] = "bot_status"
         axios.put(`${base_url}/api/roster/`,{params:params}).then(res=>{
             dispatch({
                 type:UPDATE_BOT_STATUS,
@@ -140,6 +142,23 @@ const DataState = props => {
             stopLoading()
             setError(err.message,"danger")
         });
+    }
+
+    const updateKeys = (params) => { 
+        // setLoading()
+        params["username"] = state.user.username
+        params["data_request"] = "keys"
+        const data = {}
+        Object.keys(params).map(key => params["key"] !== "" ? data[key] = params[key] : null) 
+        console.log(data)
+        // axios.put(`${base_url}/api/roster/`,{params:params}).then(res=>{
+        //     dispatch({
+        //         type:UPDATE_KEYS
+        //     })
+        // }).catch(err => {
+        //     stopLoading()
+        //     setError(err.message,"danger")
+        // });
     }
 
     const getBotStatus = () => { 
@@ -368,7 +387,8 @@ const DataState = props => {
             setProduct,
             getSymbols,
             loadUser,
-            updateBotStatus
+            updateBotStatus,
+            updateKeys
         }}>
             {props.children}
         </DataContext.Provider>

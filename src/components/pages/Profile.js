@@ -5,6 +5,7 @@ import DataContext from "../../context/data/dataContext"
 import { Navigate } from 'react-router-dom';
 import TradeParams from '../data/TradeParams';
 import TradeParamForm from '../data/TradeParamForm';
+import KeyForm from "../data/KeyForm"
 
 const Profile = () => {
     const dataContext = useContext(DataContext)
@@ -75,7 +76,7 @@ const Profile = () => {
                         <button type="button" onClick={onBigClick} className="btn btn-primary">
                             {bot_status !== null ? bot_status[product] ? " SHUTDOWN" : " TURNON" : ""}
                         </button>
-                        <div></div>
+                        <KeyForm />
                         </Fragment>
                     ) : <Navigate to="/"    />
                 }

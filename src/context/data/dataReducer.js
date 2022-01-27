@@ -4,7 +4,10 @@ import { GET_DATA, SET_TITLE, SET_TEXT, SET_LOADING,
         GET_ORDERS, 
         GET_FILLS, 
         GET_TRADE_PARAMS ,SET_PRODUCT, SET_ERROR, CLEAR_ERROR, 
-        GET_TRADES, GET_CLOUD_ERRORS,GET_BACKTEST,GET_SYMBOLS, REGISTER,LOGIN,LOGOUT,FAILED_LOGIN,FAILED_REGISTER,GET_USER, GET_BOT_STATUS, UPDATE_TRADE_PARAMS, UPDATE_BOT_STATUS } from "./types";
+        GET_TRADES, GET_CLOUD_ERRORS,GET_BACKTEST,GET_SYMBOLS
+        , REGISTER,LOGIN,LOGOUT,FAILED_LOGIN,FAILED_REGISTER,GET_USER
+        , GET_BOT_STATUS, UPDATE_TRADE_PARAMS, UPDATE_BOT_STATUS
+        ,UPDATE_KEYS } from "./types";
 
 const main_reducer = (state,action) => {
     switch(action.type) {
@@ -98,6 +101,11 @@ const main_reducer = (state,action) => {
             return {
                 ...state,
                 bot_status:action.payload,
+                loading:false
+            }
+        case UPDATE_KEYS:
+            return {
+                ...state,
                 loading:false
             }
         case GET_CLOUD_ERRORS:
