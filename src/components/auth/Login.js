@@ -20,7 +20,7 @@ const Login = () => {
         password,
     } = state
     if (isAuth)  {
-        return  <Navigate to="/dashboard"/>
+        return  <Navigate to="/profile"/>
     } else {
             return <div className="col-md-6 m-auto">
             <div className="card card-body mt-5">

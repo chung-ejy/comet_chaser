@@ -4,7 +4,7 @@ import DataContext from "../../context/data/dataContext"
 const Landing = () => {
     const dataContext = useContext(DataContext)
     const {isAuth,user} = dataContext
-    return (<div className='card'>
+    return (<div className='card mt-5'>
                 <div className='card-body justify-content-left'>
                             <h1 className="card-title justify-content-center">
                                 CometChaser

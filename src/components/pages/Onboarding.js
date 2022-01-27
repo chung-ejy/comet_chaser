@@ -13,14 +13,14 @@ const Onboarding = () => {
         setState(e.target.name)
     }
 
-    return (<div className='card'>
+    return (<div className='card mt-5'>
                 <div className='card-body'>
                     <h1 className="card-title justify-content-center">
                         Onboarding
                     </h1>
                     <div className="row">
                         <div className="col col-1">
-                    <ul className="nav nav-pills flex-column nav-fill">
+                    <ul className="nav nav-pills flex-column nav-fill fixed-left">
                         {pages.map(page => 
                         <a class="list-group-item list-group-item-action" name={page} onClick={onClick} key={page}className="nav-item">
                         {page}
