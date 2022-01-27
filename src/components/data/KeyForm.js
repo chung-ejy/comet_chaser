@@ -3,7 +3,7 @@ import DataContext from '../../context/data/dataContext'
 
 const KeyForm = () => {
     const dataContext = useContext(DataContext)
-    const {user, isAuth,loading,updateKeys} = dataContext
+    const {user, isAuth,loading,updateKeys,product} = dataContext
     const [state,setState] = useState(
         {apikey:"",
         secret:"",
@@ -25,7 +25,7 @@ const KeyForm = () => {
         <div className="card card-body mt-4 mb-4">
             <h5>Coinbase Key Update Form</h5>
             <form onSubmit={onSubmit}>
-                {Object.keys(state).map(key => (
+                {Object.keys(state).map(key => product === "test" ? ( key.includes("sandbox") ? 
                                 <div key={key}className=" row mt-2 form-group">
                                 <label>{key}</label>
                                 <input
@@ -35,8 +35,17 @@ const KeyForm = () => {
                                 onChange={onChange}
                                 value={state[key]}
                                 />
-                            </div>
-                ))}
+                            </div> : null) : ( key.includes("sandbox") ? null :
+                                <div key={key}className=" row mt-2 form-group">
+                                <label>{key}</label>
+                                <input
+                                type="password"
+                                className="form-control"
+                                name={key}
+                                onChange={onChange}
+                                value={state[key]}
+                                />
+                            </div>))}
                 <div className="form-group row mt-2">
                     <div className="col">
                     <button type="submit" className="btn btn-primary form-control col">Update Keys</button>

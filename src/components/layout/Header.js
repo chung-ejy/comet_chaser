@@ -35,7 +35,7 @@ const Header = () => {
         </li>  
         <li className="nav-item">
         <button onClick={onClick} className="nav-link btn btn-info btn-sm text-light">
-            Logout
+            <Link to="/">Logout</Link>
         </button>
         </li>
     </ul>

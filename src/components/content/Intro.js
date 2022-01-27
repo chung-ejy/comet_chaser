@@ -7,7 +7,7 @@ const Intro = () => {
                                 Introduction
                             </h1>
                         <p className="lead text-right">
-                            Wow, ya made it to onboarding! The following page will provide you information on CometChaser! Once you complete reading the
+                            Welcome to onboarding! The following page will provide you information on how to use CometChaser! Once you have completed reading the
                             contents of this page, you will be able to:</p> 
                             <ol className="list-unstyled text-left">
                                 <li><strong>Understand</strong> the research behind my functionality</li>

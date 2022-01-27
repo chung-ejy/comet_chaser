@@ -1,4 +1,4 @@
-import React, { useContext,useState } from 'react'
+import React, { useContext,useState, useEffect } from 'react'
 import DataContext from '../../context/data/dataContext'
 
 const TradeParamForm = () => {
@@ -7,9 +7,6 @@ const TradeParamForm = () => {
     const [state,setState] = useState(
         trade_params
     )
-    const  {           
-        whitelist_symbols,
-    } = state;
     const onSymbol = (e) => {
         setState({...state,[e.target.name]:[...state[e.target.name],e.target.value]});
     }
@@ -37,20 +34,18 @@ const TradeParamForm = () => {
     }
     const entries = ["standard","parameter_defined","all"]
     const exits = ["due_date","hold","adaptive_hold","adaptive_due_date"]
-    return (loading || !isAuth || available_symbols === null || whitelist_symbols === null ? "" :
+    return (loading || !isAuth ? "" :
         <div className="card card-body mt-4 mb-4">
             <div className="row mt-2">
             <form className="col" onSubmit={onSubmit}>
             {/* numericals */}
-            <h5>Backtest Parameters</h5>
-            <div className="form-group row mt-2">
+            <h5>Trading Parameters</h5>
                 {["retrack_days","signal","req","positions"].map( key =>
-                        (<div className="col" key={key}>
-                        <label className="col-form-label" htmlFor="formRange">{`${key}: ${state[key]} `}</label>
-                        <input onChange={onChange} className="form-range"
-                            name={key} placeholder={key} type="range" step="1" min="1" max="14" value={state[key]} />
+                        (<div className="form-group row mt-2" key={key}>
+                        <label className="col-form-label col-sm-7">{`${key}: `}</label>
+                        <input className="form-control-number col-sm-5" onChange={onChange}
+                            name={key} placeholder={key} type="number" value={state[key]} />
                         </div>))}
-            </div> 
             {/* booleans */}
             <div className="form-group row mt-2">
             {["value","conservative"].map(key => ( 
@@ -90,7 +85,7 @@ const TradeParamForm = () => {
             <div className="col">
                 <h5>Included Crypto</h5>
                 <ul>
-                {whitelist_symbols.map(symbol => <li className="list-group-item" onClick={onDeleteSymbol} key={symbol} value={symbol} >{symbol}</li>)}
+                {trade_params.whitelist_symbols.map(symbol => <li className="list-group-item" onClick={onDeleteSymbol} key={symbol} value={symbol} >{symbol}</li>)}
                 </ul>
             </div>
             </div>
