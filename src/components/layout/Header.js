@@ -1,5 +1,5 @@
 import React, { useContext} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import DataContext from '../../context/data/dataContext'
 const Header = () => {
     const dataContext = useContext(DataContext)
@@ -34,9 +34,9 @@ const Header = () => {
             </Link>
         </li>  
         <li className="nav-item">
-        <button onClick={onClick} className="nav-link btn btn-info btn-sm text-light">
-            <Link to="/">Logout</Link>
-        </button>
+        {/* <button onClick={onClick} className="nav-link btn btn-sm"> */}
+            <Link onClick={onClick} className="nav-link" to="/">Logout</Link>
+        {/* </button> */}
         </li>
     </ul>
     );
