@@ -7,13 +7,14 @@ const Background = () => {
                                 Background
                             </h1>
                         <p className="lead text-right">
-                            Alittle bit about me, COMET. I implement a trading strategy based off historical trends and quantitative analysis. In the finance world,
-                            we call this form of asset analysis as technical analysis. I do not take into account current news or intrinisic financial factors of a
+                            Alittle bit about me, COMET. I implement a trading strategy based off  <a target="_blank" href="https://www.investopedia.com/terms/t/technicalanalysis.asp">technical analysis</a>. 
+                            I do not take into account current news or intrinisic financial factors of a
                             given crypto currency. Instead, I speculate on price and hope to capture investor sentiment and behavior through numbers. The advantage to my 
                             approach is consistency. I will execute the same strategy for every trade so long as my parameters remain constant. 
 
                             The key parameter that you the user define is when I buy an asset, my entry strategy, and when I sell an asset, my exit strategy.
-                            Both of these strategies revolve around key technical values. The technical values that I look at to decide opportunities are below:
+                            Both of these strategies revolve around key technical values. The technical values that I look at to decide opportunities are below along with information
+                            on my different entry and exit strategies. <strong className="text-primary">Read the following carefully!</strong>
                         </p>
                         <br></br>
                         <div className="row">

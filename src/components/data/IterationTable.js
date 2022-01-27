@@ -11,26 +11,25 @@ const IterationTable = () => {
                     <thead>
                     <tr>
                         <th scope="col">time</th>
-                        <th className="col d-none d-lg-table-cell" scope="col">retrack_days</th>
-                        <th scope="col">req</th>
                         <th scope="col">signal</th>
+                        <th scope="col">req</th>
+                        <th className="col d-none d-lg-table-cell" scope="col">retrack_days</th>
                         <th className="d-none d-lg-table-cell" scope="col">value</th>
                         <th className="d-none d-lg-table-cell" scope="col">conservative</th>
                         <th className="d-none d-lg-table-cell" scope="col">entry</th>
                         <th className="d-none d-lg-table-cell" scope="col">exit</th>
-                        <th scope="col" className="d-none d-lg-table-cell">sleep_time</th>
-                        <th scope="col" className="d-none d-lg-table-cell">status</th>
+                        <th scope="col" className="d-none d-lg-table-cell">positions</th>
                     </tr>
                     </thead>
                     <tbody>
                     
                    {iterations.map(row => 
                         (<tr key={row["date"]}>
-                        {Object.keys(row).map(key => ["retrack_days","value"
-                        ,"conservative","entry_strategy"
-                        ,"exit_strategy","sleep_time","status"].includes(key) 
+                        {Object.keys(row).map(key => ["date","signal",	"req",	"retrack_days",	"value"
+                                        ,"conservative"	,"entry_strategy",	"exit_strategy",	
+                                        "positions"].includes(key) 
                         ? <td key={key} className="d-none d-lg-table-cell">
-                            {row[key]}</td> : <td key={key}>{row[key]}</td>)}
+                            {row[key]}</td> : null)}
                         </tr>))
                     }
                 </tbody>

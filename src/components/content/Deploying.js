@@ -1,5 +1,5 @@
 import React from 'react';
-
+import ProfilePage from '../../assets/onboarding/profile.PNG'
 const Deploying = () => {
     return (<div className='card'>
                 <div className='card-body justify-content-left'>
@@ -7,14 +7,22 @@ const Deploying = () => {
                                 Deploying
                             </h1>
                         <p className="lead text-right">
-                            Now head on over to the profile tab. You will see your current trade parameters, a form to update your parameters, and the apikey update form.
-                            If you ever want to change your api keys utilize the apikey form to update them! If you ever want to change your trade parameters, use 
-                            the trade parameter form to update them. When you started your account, we provided research based parameters that have performed well 
-                            last year. If you're happy with the given parameters keep them as is and CLICK THE TURN ON BUTTON! WOW HERE WE GO! You can always
-                            shutdown your bot through this page by clicking the shutdown button. You'll notice the status of your bot at the top. Also you can deploy
-                            a test bot by switching to the test bot view. Once you've provided us with the trade parameters you want to use and clicked turn on. Your bot
-                            is now live and is beginning to analyze the cryptocurrency market. Lets head on over to tracking to see how to track your bot's progress.
-                            </p>
+                            Now head on over to the profile tab to check out your profile!
+                        </p>    
+                        <h5>Available Actions:</h5>
+                        <ul className="list-unstyled">
+                            <li><strong>Notice</strong> the status of your bot in the header</li>
+                            <li><strong>Toggle</strong> between the comet test bot and the comet live bot by clicking on the header</li>
+                            <li><strong>Add and Update</strong> your api keys by utilizing the apikey form</li>
+                            <li><strong>Deploy or Shutdown</strong> your bots by clicking on the deploy/shutdown button</li>
+                        </ul>
+                        <img src={ProfilePage} className="img-fluid mt-3 mb-3" alt="Responsive image"></img>
+                        <p className="lead">
+                            You will see your current trade parameters, a form to update your parameters, and the apikey update form.
+                        </p>
+                        <p className="lead">
+                            Lets head on over to tracking to see how to track your bot's progress.
+                        </p>
                         <br></br>
             </div>
         </div>

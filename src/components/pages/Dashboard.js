@@ -71,7 +71,7 @@ const Dashboard = () => {
                 <div className='card-body'>
                              {/* <Alert /> */}
                             <h1 onClick={onClick}className="card-title justify-content-center">
-                                {product[0].toUpperCase() + product.slice(1) + " Dashboard"}
+                                {"Comet " + product[0].toUpperCase() + product.slice(1) + " Dashboard"}
                             </h1>
                 {loading || title.size < 1 ? (
                     <Fragment>

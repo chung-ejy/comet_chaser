@@ -56,16 +56,12 @@ const BackTestForm = () => {
             <form className="col"onSubmit={onSubmit}>
             {/* numericals */}
             <h5>Backtest Parameters</h5>
-            <div className="form-group row mt-2">
                 {["retrack_days","signal","req","positions"].map( key =>
-                        (<div key={key} className="col">
-                        <label className="col-form-label" htmlFor="formRange">
-                            {`${key}: ${state[key]} `}</label>
-                        <input onChange={onChange} className="form-range"
-                            name={key} placeholder={key} type="range" 
-                            step="1" min="1" max="10" value={state[key]} />
+                        (<div className="form-group row mt-7" key={key}>
+                        <label className="col-form-label col-sm-7">{`${key}: `}</label>
+                        <input className="form-control-number col-sm-5" onChange={onChange}
+                            name={key} placeholder={key} type="number" value={state[key]} />
                         </div>))}
-            </div> 
             {/* booleans */}
             <div className="form-group row mt-2">
             {["value","conservative"].map(key => ( 

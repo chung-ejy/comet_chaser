@@ -19,7 +19,8 @@ const Profile = () => {
             ,getBotStatus
             ,bot_status
             ,getSymbols
-            ,updateBotStatus
+            ,updateBotStatus,
+            trade_params
             } = dataContext;
     const {product} = state
     useEffect(() => {
@@ -54,29 +55,29 @@ const Profile = () => {
             updateBotStatus({"live":!bot_status[product]})
         }
         
-        // setState({...state,["product"]:"live"})
-        // setProduct("live"
-        
     }
 
     return (<div className='card text-center mt-5'>
                 <div className='card-body'>
-                    <h1 onClick={onClick}className="card-title justify-content-center">
-                        {product[0].toUpperCase() + product.slice(1) + " BOT" }
-                        {bot_status !== null ? bot_status[product] ? " LIVE" : " OFFLINE" : ""}
+                    <h1 onClick={onClick}className={`card-title justify-content-center text-${bot_status[product] ? "primary": "secondary"}`}>
+                        {"Comet " + product[0].toUpperCase() + product.slice(1)}
+                        {bot_status !== null ? bot_status[product] ? " Online" : " Offline" : ""}
                     </h1>
-                {loading || title.size < 1 ? (
+                {loading || !isAuth || user==null ? (
                     <h3 className="text-center m-3">
                     <i className="fas fa-spinner text-primary fa-7x"></i>
                     </h3>
                     ) : isAuth ? (
                         <Fragment>
                         <TradeParams />
-                        <TradeParamForm />
-                        <button type="button" onClick={onBigClick} className="btn btn-primary">
-                            {bot_status !== null ? bot_status[product] ? " SHUTDOWN" : " TURNON" : ""}
+
+                        <button type="button" onClick={onBigClick} className={`btn btn-${bot_status[product] ? "secondary": "primary"}`}>
+                            {bot_status !== null ? bot_status[product] ? " SHUTDOWN" : " DEPLOY!!!" : ""}
                         </button>
-                        <KeyForm />
+                        <div className="row">
+                        {/* <div className="col-6"><TradeParamForm /></div> */}
+                        <div className="col-6"><KeyForm /></div>
+                        </div>
                         </Fragment>
                     ) : <Navigate to="/"    />
                 }

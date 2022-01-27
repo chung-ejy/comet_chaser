@@ -116,6 +116,7 @@ const DataState = props => {
         params["version"] = state.product
         params["username"] = state.user.username
         axios.post(`${base_url}/api/roster/`,{params:params}).then(res=>{
+            console.log(res.data)
             dispatch({
                 type:UPDATE_TRADE_PARAMS,
                 payload:res.data
