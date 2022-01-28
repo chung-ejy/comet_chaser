@@ -1,5 +1,5 @@
 import React from 'react'
-import { HashRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import DataState from "./context/data/dataState"
 import Header from "./components/layout/Header"
 import Footer from "./components/layout/Footer"
@@ -19,11 +19,11 @@ export const App = () => {
                 {/* <Alert /> */}
                 <Routes>
                     <Route exact path ="/" element={<Landing />} />
-                    <Route exact path ="/profile" element={<Profile />} />
-                    <Route exact path ="/tracking" element={<Dashboard />} />
+                    {/* <Route exact path ="/profile" element={<Profile />} />
+                    <Route exact path ="/tracking" element={<Dashboard />} /> */}
                     <Route exact path ="/onboarding" element={<Onboarding />} />
-                    <Route exact path="/register" element={<Register/>} /> 
-                    <Route exact path="/login" element={<Login/>} /> 
+                    {/* <Route exact path="/register" element={<Register/>} /> 
+                    <Route exact path="/login" element={<Login/>} />  */}
                     <Route exact path="/backtest" element={<Backtest />} /> 
                 </Routes>
             </div>

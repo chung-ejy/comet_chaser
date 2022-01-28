@@ -18,21 +18,21 @@ const Header = () => {
             Onboarding
             </Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
             <Link to="/profile" className="nav-link">
             Profile
             </Link>
-        </li>
+        </li> */}
         <li className="nav-item">
             <Link to="/backtest" className="nav-link">
             Backtesting
             </Link>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
             <Link to="/tracking" className="nav-link">
             Tracking
             </Link>
-        </li>  
+        </li>   */}
         <li className="nav-item">
         {/* <button onClick={onClick} className="nav-link btn btn-sm"> */}
             <Link onClick={onClick} className="nav-link" to="/">Logout</Link>
@@ -58,7 +58,7 @@ const Header = () => {
             Backtesting
             </Link>
         </li> 
-        <li className="nav-item">
+        {/* <li className="nav-item">
             <Link to="/register" className="nav-link">
             Register
             </Link>
@@ -67,7 +67,7 @@ const Header = () => {
             <Link to="/login" className="nav-link">
             Login
             </Link>
-        </li> 
+        </li>  */}
         </ul>
     );
     

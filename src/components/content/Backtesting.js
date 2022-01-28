@@ -51,9 +51,7 @@ const Backtesting = () => {
                         <p className="lead m-3">
                             Moving forward, once your ready head on over to the backtesting page, input the parameters you want to backtest and run your backtest!
                             I will then implement the given strategy over last years crypto prices and output a list of trades that I executed. Feel free
-                            to analyze said trades and see whether or not your happy with the results. If not, try tweaking your parameters and try again!
-                            Once you're satisfied with a given parameter, head on over to connecting to get started on connecting your 
-                            coinbase pro account.
+                            to analyze said trades and see whether or not your happy with the results. If not, try tweaking your parameters and try again! Have fun!
                         </p>
                         </div>
 
