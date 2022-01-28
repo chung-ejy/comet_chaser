@@ -1,10 +1,10 @@
-import React, { useContext,useState } from 'react'
+import React, { useContext } from 'react'
 import DataContext from '../../context/data/dataContext'
 
 const IterationTable = () => {
     const dataContext = useContext(DataContext)
-    const {iterations,loading} = dataContext
-    return ( loading ? "" :
+    const {iterations,loading,isAuth} = dataContext
+    return ( loading || !isAuth ? "" :
         <div className="card card-body mt-4 mb-4">
             <div className="card card-body mt-4 mb-4">
             <table className="table table-sm">

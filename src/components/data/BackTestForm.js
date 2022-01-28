@@ -37,7 +37,7 @@ const BackTestForm = () => {
 
     const onRadio = (e) => {
         e.preventDefault()
-        if (state[e.target.name]==false){
+        if (state[e.target.name]===false){
             setState({...state,[e.target.name]:true})
         } else {
             setState({...state,[e.target.name]:false})
@@ -67,7 +67,7 @@ const BackTestForm = () => {
             {["value","conservative"].map(key => ( 
                                 <div key={key} className="col">
                                    <button onClick={onRadio} name={key} 
-                                   className={`btn btn-${state[key] == false 
+                                   className={`btn btn-${state[key] === false 
                                    ? "danger" : "primary"} form-control`}>{key}
                                    </button>
                                </div>))}
@@ -79,7 +79,7 @@ const BackTestForm = () => {
                         <label className="col-form-label">{key}</label>
                         <select placeholder="strategy" name={key} onChange={onChange} 
                         className="form-control">
-                        {key == "entry_strategy" ? entries.map(entry=> 
+                        {key === "entry_strategy" ? entries.map(entry=> 
                         <option key={entry}>{entry}</option>) : 
                         exits.map(entry=> <option key={entry}>{entry}</option>)}
                         </select>

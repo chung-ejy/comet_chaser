@@ -120,15 +120,6 @@ const main_reducer = (state,action) => {
                     available_symbols:action.payload,
                     loading:false
                 }
-            
-        case REGISTER:
-                return {
-                    ...state,
-                    user:action.payload.user,
-                    isAuth:true,
-                    token:action.payload.token,
-                    loading:false
-                }
         case FAILED_REGISTER:
             return {
                 ...state,
@@ -137,6 +128,7 @@ const main_reducer = (state,action) => {
                 token:"",
                 loading:false
             }
+        case REGISTER:
         case LOGIN:
                 return {
                     ...state,

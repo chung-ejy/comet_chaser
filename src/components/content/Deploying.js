@@ -16,7 +16,7 @@ const Deploying = () => {
                             <li><strong>Add and Update</strong> your api keys by utilizing the apikey form</li>
                             <li><strong>Deploy or Shutdown</strong> your bots by clicking on the deploy/shutdown button</li>
                         </ul>
-                        <img src={ProfilePage} className="img-fluid mt-3 mb-3" alt="Responsive image"></img>
+                        <img src={ProfilePage} className="img-fluid mt-3 mb-3" alt="Responsive"></img>
                         <p className="lead m-3 ">
                             You will see your current trade parameters, a form to update your parameters, and the apikey update form.
                         </p>

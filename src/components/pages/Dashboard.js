@@ -11,23 +11,20 @@ import { Navigate } from 'react-router-dom';
 
 const Dashboard = () => {
     const dataContext = useContext(DataContext)
-    const [state,setState] = useState({"product":"test","table":"iterations"})
-    const {loading,title,
-            getHistoricals,getTradeParams,getOrders,getIterations,getTrades, loadUser
+    const [state,setState] = useState({"table":"iterations"})
+    const {loading,title,getTradeParams,getOrders,getIterations,getTrades, loadUser
                             ,setProduct
-                            ,getCloudErrors
                             ,isAuth
                             ,user
+                            ,product
                         } = dataContext;
-    const {table,product} = state
+    const {table} = state
     useEffect(() => {
         if (user!=null && isAuth) {
             getTradeParams()
             getIterations()
             getOrders()
-            // getHistoricals()
             getTrades()
-            // getCloudErrors()
         } else {
             if (isAuth) {
                 loadUser()
@@ -38,10 +35,8 @@ const Dashboard = () => {
     );
     const onClick = (e) => {
         if (product === "test"){
-            setState({...state,["product"]:"live"})
             setProduct("live")
         } else {
-            setState({...state,["product"]:"test"})
             setProduct("test")
         }
         
@@ -51,10 +46,6 @@ const Dashboard = () => {
         setState({...state,["table"]:"orders"})
     }
 
-    // const onHistorical = (e) => {
-    //     setState({...state,["table"]:"historicals"})
-    // }
-
     const onIteration = (e) => {
         setState({...state,["table"]:"iterations"})
     }
@@ -62,10 +53,6 @@ const Dashboard = () => {
     const onTrade = (e) => {
         setState({...state,["table"]:"trades"})
     }
-
-    // const onError = (e) => {
-    //     setState({...state,["table"]:"errors"})
-    // }
 
     return (<div className='card text-center mt-5'>
                 <div className='card-body'>
@@ -81,17 +68,13 @@ const Dashboard = () => {
                     </Fragment>) : !isAuth ? (<Navigate to="/"/>) : (
                         <Fragment>
                             <button type="button" onClick={onIteration} className="btn btn-primary m-2">iterations</button>
-                            {/* <button type="button" onClick={onHistorical} className="btn btn-primary m-2">historicals</button> */}
                             <button type="button" onClick={onOrder} className="btn btn-primary m-2">orders</button>
                             <button type="button" onClick={onTrade} className="btn btn-primary m-2">trades</button>
-                            {/* <button type="button" onClick={onError} className="btn btn-primary m-2">errors</button> */}
                             {table === "orders" ? <OrderTable /> : table === "iterations" ? 
                             <Fragment> 
                                 <TradeParams /> 
                                 <IterationTable />
                             </Fragment>
-                            // : table === "historicals"? <HistoricalTable /> 
-                            // : table==="errors"? <ErrorTable></ErrorTable> 
                             : <TradeTable></TradeTable> 
                             }
                         </Fragment>

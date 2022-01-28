@@ -10,7 +10,7 @@ const Landing = () => {
                                 CometChaser
                             </h1>`
                         <div className="row">
-                        <img src={Logo} style={{height:"100%"}}className="img-fluid m-5 col-sm-2 align-middle" alt="Responsive image"></img>
+                        <img src={Logo} style={{height:"100%"}}className="img-fluid m-5 col-sm-2 align-middle" alt="Responsive"></img>
                         <div className="col-sm-8">
                         <p className="lead m-3 align-text-middle text-right">
                             {isAuth ? `Hi ${user.username}` : `` }

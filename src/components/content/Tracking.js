@@ -19,7 +19,7 @@ const Tracking = () => {
                             you defined and information on the different analysis runs your bot ran. Your bot will analyze the market every hour with 
                             the parameters you defined. Those analysis runs or iterations are logged and shown to you here. 
                             </p>
-                            <img src={Iterations} className="img-fluid mt-3 mb-3 col-sm-6" alt="Responsive image"></img>
+                            <img src={Iterations} className="img-fluid mt-3 mb-3 col-sm-6" alt="Responsive"></img>
                             </div>
                             </div>
                             <div className="card m-3">
@@ -29,7 +29,7 @@ const Tracking = () => {
                             From there we have the order
                             view which shows you the last 10 trades your bot has run. 
                             </p>
-                            <img src={Orders} className="img-fluid mt-3 mb-3 col-sm-6" alt="Responsive image"></img>
+                            <img src={Orders} className="img-fluid mt-3 mb-3 col-sm-6" alt="Responsive"></img>
                             </div>
                             </div>
                             <div className="card m-3">
@@ -39,7 +39,7 @@ const Tracking = () => {
                             Now the trades view is where you can track real progress. It shows 
                             you the gain that you made off of a buying and selling a cryptocurrency position. This mirrors the trades that you saw
                             in your backtests and is how you gauge whether your strategy is performing up to par.</p>
-                            <img src={Trades} className="img-fluid mt-3 mb-3 col-sm-6" alt="Responsive image"></img>
+                            <img src={Trades} className="img-fluid mt-3 mb-3 col-sm-6" alt="Responsive"></img>
                             </div>
                             </div>
                             <p className="lead m-3 ">

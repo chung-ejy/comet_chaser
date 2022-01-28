@@ -1,10 +1,8 @@
 import {
-        GET_HISTORICALS, 
         GET_ITERATIONS, 
         GET_ORDERS, 
         GET_TRADE_PARAMS ,
         GET_TRADES,
-        GET_CLOUD_ERRORS,
         GET_BACKTEST,
         SET_TITLE, 
         SET_TEXT, 
@@ -50,7 +48,7 @@ const DataState = props => {
         error:null,
         loading:false
     }
-    const base_url = "http://localhost:8000/"
+    const base_url = "http://localhost:8000"
     const [state,dispatch] = useReducer(dataReducer,initialState)
 
     const setError = (msg,type) => {
@@ -97,10 +95,53 @@ const DataState = props => {
             payload: text
         });
     }
+    
+    const getOrders= () => {
+        setLoading()
+        axios.get(`${base_url}/api/reporter/order/`,{params:{version:state.product
+            ,username:state.user.username}}).then(res=>{
+            dispatch({
+                type:GET_ORDERS,
+                payload:res.data
+            })
+        }).catch(err => {
+            stopLoading()
+            setError(err.message,"danger")
+        });
+    }
 
+    const getTrades= () => {
+        setLoading()
+        axios.get(`${base_url}/api/reporter/trade/`,{params:{version:state.product
+            ,username:state.user.username}}).then(res=>{
+            dispatch({
+                type:GET_TRADES,
+                payload:res.data
+            })
+        }).catch(err => {
+            stopLoading()
+            setError(err.message,"danger")
+        });
+    }
+
+    const getIterations= () => {
+        setLoading()
+        axios.get(`${base_url}/api/reporter/iteration/`,{params:{version:state.product
+            ,username:state.user.username}}).then(res=>{
+            dispatch({
+                type:GET_ITERATIONS,
+                payload:res.data
+            })
+        }).catch(err => {
+            stopLoading()
+            setError(err.message,"danger")
+        });
+    }
     const getTradeParams = () => { 
         setLoading()
-        axios.get(`${base_url}/api/roster/`,{params:{version:state.product,username:state.user.username,data_request:"trade_params"}}).then(res=>{
+        axios.get(`${base_url}/api/trade_params/`,{params:{version:state.product
+                                                ,username:state.user.username
+                                                ,data_request:"user"}}).then(res=>{
             dispatch({
                 type:GET_TRADE_PARAMS,
                 payload:res.data
@@ -115,8 +156,7 @@ const DataState = props => {
         setLoading()
         params["version"] = state.product
         params["username"] = state.user.username
-        axios.post(`${base_url}/api/roster/`,{params:params}).then(res=>{
-            console.log(res.data)
+        axios.post(`${base_url}/api/trade_params/`,{params:params}).then(res=>{
             dispatch({
                 type:UPDATE_TRADE_PARAMS,
                 payload:res.data
@@ -148,7 +188,6 @@ const DataState = props => {
         params["data_request"] = "keys"
         const data = {}
         Object.keys(params).map(key => params["key"] !== "" ? data[key] = params[key] : null) 
-        console.log(data)
         // axios.put(`${base_url}/api/roster/`,{params:params}).then(res=>{
         //     dispatch({
         //         type:UPDATE_KEYS
@@ -161,7 +200,8 @@ const DataState = props => {
 
     const getBotStatus = () => { 
         setLoading()
-        axios.get(`${base_url}/api/roster/`,{params:{version:state.product,username:state.user.username,data_request:"bot_status"}}).then(res=>{
+        axios.get(`${base_url}/api/roster/`,{params:{version:state.product
+            ,username:state.user.username,data_request:"bot_status"}}).then(res=>{
             dispatch({
                 type:GET_BOT_STATUS,
                 payload:res.data.bot_status
@@ -175,76 +215,10 @@ const DataState = props => {
     const getBacktest = (params) => { 
         setLoading()
         axios.post(`${base_url}/api/backtest/`,{params:params}).then(res=>{
-            console.log(res.data)
             dispatch({
                 type:GET_BACKTEST,
                 payload:res.data
 
-            })
-        }).catch(err => {
-            stopLoading()
-            setError(err.message,"danger")
-        });
-    }
-
-    const getHistoricals= () => {
-        setLoading()
-        axios.get(`${base_url}/api/reporter/`,{params:{version:state.product,username:state.user.username,data_request:"historicals"}}).then(res=>{
-            dispatch({
-                type:GET_HISTORICALS,
-                payload:res.data.data
-            })
-        }).catch(err => {
-            stopLoading()
-            setError(err.message,"danger")
-        });
-    }
-
-    const getOrders= () => {
-        setLoading()
-        axios.get(`${base_url}/api/reporter/`,{params:{version:state.product,username:state.user.username,data_request:"orders"}}).then(res=>{
-            dispatch({
-                type:GET_ORDERS,
-                payload:res.data.data
-            })
-        }).catch(err => {
-            stopLoading()
-            setError(err.message,"danger")
-        });
-    }
-
-    const getTrades= () => {
-        setLoading()
-        axios.get(`${base_url}/api/reporter/`,{params:{version:state.product,username:state.user.username,data_request:"trades"}}).then(res=>{
-            dispatch({
-                type:GET_TRADES,
-                payload:res.data.data
-            })
-        }).catch(err => {
-            stopLoading()
-            setError(err.message,"danger")
-        });
-    }
-
-    const getCloudErrors= () => {
-        setLoading()
-        axios.get(`${base_url}/api/reporter/`,{params:{version:state.product,username:state.user.username,data_request:"errors"}}).then(res=>{
-            dispatch({
-                type:GET_CLOUD_ERRORS,
-                payload:res.data.data
-            })
-        }).catch(err => {
-            stopLoading()
-            setError(err.message,"danger")
-        });
-    }
-
-    const getIterations= () => {
-        setLoading()
-        axios.get(`${base_url}/api/reporter/`,{params:{version:state.product,username:state.user.username,data_request:"iterations"}}).then(res=>{
-            dispatch({
-                type:GET_ITERATIONS,
-                payload:res.data.data
             })
         }).catch(err => {
             stopLoading()
@@ -278,10 +252,13 @@ const DataState = props => {
                 setError(res.data.error,"danger")
             } else {
                 localStorage.setItem('token', res.data.token)
-                dispatch({
-                    type:REGISTER,
-                    payload:res.data
+                axios.post(`${base_url}/api/roster/`,data).then(res_2 => {
+                    dispatch({
+                        type:REGISTER,
+                        payload:res.data
+                    })            
                 })
+
             }
         })
     }
@@ -374,13 +351,13 @@ const DataState = props => {
             setError,
             setTitle,
             setText,
-            getHistoricals,
+            // getHistoricals,
             getIterations,
             getOrders,
             getTradeParams,
             updateTradeParams,
             getTrades,
-            getCloudErrors,
+            // getCloudErrors,
             getBacktest,
             setProduct,
             getSymbols,

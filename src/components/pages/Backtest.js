@@ -1,4 +1,4 @@
-import React, {useContext,useEffect,Fragment,useState} from 'react';
+import React, {useContext,useEffect,Fragment} from 'react';
 import DataContext from "../../context/data/dataContext"
 // import Sentiment from '../sentiment/Sentiment';
 // import Form from '../data/Form';
@@ -7,31 +7,18 @@ import BacktestTable from '../data/BacktestTable';
 import AnalysisViz from '../data/AnalysisViz';
 const Backtest = () => {
     const dataContext = useContext(DataContext)
-    const [state,setState] = useState({"product":"test"})
     const {loading
-            ,setProduct
-            ,getSymbols
+            ,getSymbols, product
                         } = dataContext;
-    const {product} = state
     useEffect(() => {
         getSymbols()
     },//eslint-disable-next-line
     [product]
     );
-    const onClick = (e) => {
-        if (product == "test"){
-            setState({...state,["product"]:"live"})
-            setProduct("live")
-        } else {
-            setState({...state,["product"]:"test"})
-            setProduct("test")
-        }
-        
-    }
 
     return (<div className='card text-center mt-5'>
                 <div className='card-body'>
-                            <h1 onClick={onClick}className="card-title text-center">
+                            <h1 className="card-title text-center">
                                 Backtesting Dashboard
                             </h1>
                 {loading ? (

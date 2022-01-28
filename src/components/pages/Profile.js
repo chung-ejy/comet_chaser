@@ -1,4 +1,4 @@
-import React, {useContext,useEffect,Fragment,useState} from 'react';
+import React, {useContext,useEffect,Fragment } from 'react';
 import DataContext from "../../context/data/dataContext"
 // import Sentiment from '../sentiment/Sentiment';
 // import Form from '../data/Form';
@@ -9,46 +9,37 @@ import KeyForm from "../data/KeyForm"
 
 const Profile = () => {
     const dataContext = useContext(DataContext)
-    const [state,setState] = useState({"product":"test"})
-    const {loading,title
+    const {loading
             ,getTradeParams
-            ,loadUser
             ,setProduct
             ,isAuth
             ,user
             ,getBotStatus
             ,bot_status
             ,getSymbols
-            ,updateBotStatus,
-            trade_params
+            ,updateBotStatus
+            ,product
             } = dataContext;
-    const {product} = state
     useEffect(() => {
-        if (user!=null && isAuth) {
+        if (isAuth && user!==null) {
             getTradeParams()
             getBotStatus()
             getSymbols()
-        } else {
-            if (isAuth) {
-                loadUser()
-            }
         }
     },//eslint-disable-next-line
-    [user,product,isAuth]
+    [product,user,isAuth]
     );
+
     const onClick = (e) => {
         if (product === "test"){
-            setState({...state,["product"]:"live"})
             setProduct("live")
         } else {
-            setState({...state,["product"]:"test"})
             setProduct("test")
         }
         
     }
 
     const onBigClick = (e) => {
-        console.log("clicked!",product)
         if (product === "test") {
             updateBotStatus({"test":!bot_status[product]})
         } else {
@@ -63,23 +54,22 @@ const Profile = () => {
                         {"Comet " + product[0].toUpperCase() + product.slice(1)}
                         {bot_status !== null ? bot_status[product] ? " Online" : " Offline" : ""}
                     </h1>
-                {loading || !isAuth || user==null ? (
+                {!isAuth ? <Navigate to="/"/> : loading ? (
                     <h3 className="text-center m-3">
                     <i className="fas fa-spinner text-primary fa-7x"></i>
                     </h3>
-                    ) : isAuth ? (
+                    ) : user !== null ? (
                         <Fragment>
                         <TradeParams />
-
                         <button type="button" onClick={onBigClick} className={`btn btn-${bot_status[product] ? "secondary": "primary"}`}>
                             {bot_status !== null ? bot_status[product] ? " SHUTDOWN" : " DEPLOY!!!" : ""}
                         </button>
                         <div className="row">
-                        {/* <div className="col-6"><TradeParamForm /></div> */}
+                        <div className="col-6"><TradeParamForm /></div>
                         <div className="col-6"><KeyForm /></div>
                         </div>
                         </Fragment>
-                    ) : <Navigate to="/"    />
+                    )  : null
                 }
             </div>
         </div>

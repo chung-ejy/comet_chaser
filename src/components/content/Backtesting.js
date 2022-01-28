@@ -14,7 +14,7 @@ const Backtesting = () => {
                             <div className="card m-3">
                             <h5 className="m-3">Notes:</h5>
                             <ul className="m-3 list-unstyled">
-                           <li>The data used for our backtest comes from  <a target="_blank" href="https://www.alphavantage.co/documentation/">AlphaVantage's</a> cryptocurrency api.</li>
+                           <li>The data used for our backtest comes from  <a target="_blank" rel="noreferrer" href="https://www.alphavantage.co/documentation/">AlphaVantage's</a> cryptocurrency api.</li>
                            <li>Data provided by AlphaVantage are for educational purposes. Use at your own risk.</li>
                            <li>DISCLAIMER: Backtest performance does not reflect future performance</li>
                             </ul>

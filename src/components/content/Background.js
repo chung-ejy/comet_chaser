@@ -7,7 +7,7 @@ const Background = () => {
                                 Background
                             </h1>
                         <p className="lead m-3  text-right">
-                            Alittle bit about me, COMET. I implement a trading strategy based off  <a target="_blank" href="https://www.investopedia.com/terms/t/technicalanalysis.asp">technical analysis</a>. 
+                            Alittle bit about me, COMET. I implement a trading strategy based off  <a target="_blank" without rel="noreferrer" href="https://www.investopedia.com/terms/t/technicalanalysis.asp">technical analysis</a>. 
                             I do not take into account current news or intrinisic financial factors of a
                             given crypto currency. Instead, I speculate on price and hope to capture investor sentiment and behavior through numbers. The advantage to my 
                             approach is consistency. I will execute the same strategy for every trade so long as my parameters remain constant. 
@@ -24,7 +24,7 @@ const Background = () => {
                             <li> <strong>Signal:</strong> Percentage change in price. This is the first derivative of price.</li>
                             <li> <strong>Velocity:</strong> Rate of percentage change. This is the second derivative of price.</li>
                             <li> <strong>Inflection:</strong> Concavity of Velocity. This is the third derivative of price.</li>
-                            <li>For additional information on derivatives check out this <a target="_blank" href="https://www.youtube.com/watch?v=WUvTyaaNkzM">link</a></li>
+                            <li>For additional information on derivatives check out this <a target="_blank" without rel="noreferrer" href="https://www.youtube.com/watch?v=WUvTyaaNkzM">link</a></li>
                             </ul>
                             </div>
                             <div className="card col-4 mb-3">

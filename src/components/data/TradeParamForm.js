@@ -3,10 +3,35 @@ import DataContext from '../../context/data/dataContext'
 
 const TradeParamForm = () => {
     const dataContext = useContext(DataContext)
-    const {trade_params,isAuth,loading, available_symbols,updateTradeParams} = dataContext
+    const {trade_params,isAuth,loading, available_symbols,updateTradeParams,product,user} = dataContext
     const [state,setState] = useState(
-        trade_params
+        {
+            retrack_days:3,
+            signal: 3,
+            req:1,
+            positions:1,
+            entry_strategy: "all",
+            exit_strategy: "adaptive_hold",
+            value: false,
+            conservative: true,
+            whitelist_symbols:["ALL"],
+            start:"2021-01-01T00:00",
+            end: "2022-01-01T00:00"          
+        }
     )
+    useEffect(() => {
+        if (isAuth && user!==null) {
+            Object.keys(trade_params).map(key => setState({...state,[key]:trade_params[key]}))
+            try{
+                setState({...state,["whitelist_symbols"]:trade_params["whitelist_symbols"]})
+            } catch (error ){
+                setState({...state,["whitelist_symbols"]:["ALL"]})
+            }
+        }
+    },//eslint-disable-next-line
+    [product,user,isAuth]
+    );
+    const {whitelist_symbols} = state
     const onSymbol = (e) => {
         setState({...state,[e.target.name]:[...state[e.target.name],e.target.value]});
     }
@@ -34,7 +59,7 @@ const TradeParamForm = () => {
     }
     const entries = ["standard","parameter_defined","all"]
     const exits = ["due_date","hold","adaptive_hold","adaptive_due_date"]
-    return (loading || !isAuth ? "" :
+    return (loading || !isAuth || user===null ? "" :
         <div className="card card-body mt-4 mb-4">
             <div className="row mt-2">
             <form className="col" onSubmit={onSubmit}>
@@ -82,12 +107,12 @@ const TradeParamForm = () => {
                     </div>
                 </div>
             </form>
-            <div className="col">
+            {/* <div className="col">
                 <h5>Included Crypto</h5>
                 <ul>
-                {trade_params.whitelist_symbols.map(symbol => <li className="list-group-item" onClick={onDeleteSymbol} key={symbol} value={symbol} >{symbol}</li>)}
+                {user!==null && isAuth && !loading ? whitelist_symbols.map(symbol => <li className="list-group-item" onClick={onDeleteSymbol} key={symbol} value={symbol} >{symbol}</li>) : null}
                 </ul>
-            </div>
+            </div> */}
             </div>
         </div>
     )

@@ -1,5 +1,4 @@
 import React from 'react';
-import Logo from '../../assets/logos/logo.png'
 const Intro = () => {
     return (<div className='card'>
                 <div className='card-body justify-content-left'>
