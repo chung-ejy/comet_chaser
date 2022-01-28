@@ -24,7 +24,7 @@ const Profile = () => {
         if (isAuth && user!==null) {
             getTradeParams()
             getBotStatus()
-            getSymbols()
+            // getSymbols()
         }
     },//eslint-disable-next-line
     [product,user,isAuth]

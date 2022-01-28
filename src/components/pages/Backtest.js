@@ -7,14 +7,12 @@ import BacktestTable from '../data/BacktestTable';
 import AnalysisViz from '../data/AnalysisViz';
 const Backtest = () => {
     const dataContext = useContext(DataContext)
-    const {loading
-            ,getSymbols, product
-                        } = dataContext;
-    useEffect(() => {
-        getSymbols()
-    },//eslint-disable-next-line
-    [product]
-    );
+    const {loading, getSymbols } = dataContext;
+    // useEffect(() => {
+    //     getSymbols()
+    // },//eslint-disable-next-line
+    // [product]
+    // );
 
     return (<div className='card text-center mt-5'>
                 <div className='card-body'>
