@@ -92,7 +92,7 @@ const TradeParamForm = () => {
             </div>
             {/* symbols */}
             
-            <div key={"symbols"} className="form-group row mt-2">
+            {/* <div key={"symbols"} className="form-group row mt-2">
                 <div key={"symbols"} className="col ml-3">
                     <label className="col-form-label">Add Crypto</label>
                     <select placeholder="ALL" name={"symbols"} onChange={onSymbol} className="form-control">
@@ -100,7 +100,7 @@ const TradeParamForm = () => {
                     <option key ={"ALL"}>ALL</option>
                     </select>
                 </div>
-            </div> 
+            </div>  */}
                 <div className="form-group row mt-2">
                     <div className="col">
                     <button type="submit" className="btn btn-primary form-control col">Update</button>

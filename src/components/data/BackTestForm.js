@@ -19,9 +19,6 @@ const BackTestForm = () => {
             end: "2022-01-01T00:00"          
         }
     )
-    const  {           
-        symbols,
-    } = state;
 
     const onSymbol = (e) => {
         setState({...state,[e.target.name]:[...state[e.target.name],e.target.value]});
@@ -99,7 +96,7 @@ const BackTestForm = () => {
             </div>
             {/* symbols */}
             
-            <div key={"symbols"} className="form-group row mt-2">
+            {/* <div key={"symbols"} className="form-group row mt-2">
                 <div key={"symbols"} className="col ml-3">
                     <label className="col-form-label">Add Crypto</label>
                     <select placeholder="ALL" name={"symbols"} onChange={onSymbol} 
@@ -109,7 +106,7 @@ const BackTestForm = () => {
                     <option key ={"ALL"}>ALL</option>
                     </select>
                 </div>
-            </div> 
+            </div>  */}
                 <div className="form-group row mt-2">
                     <div className="col">
                     <button type="submit" className="btn btn-primary form-control col">
@@ -117,13 +114,13 @@ const BackTestForm = () => {
                     </div>
                 </div>
             </form>
-            <div className="col">
+            {/* <div className="col">
                 <h5>Included Crypto</h5>
                 <ul>
                 {symbols.map(symbol => <li className="list-group-item" 
                 onClick={onDeleteSymbol} key={symbol} value={symbol} >{symbol}</li>)}
                 </ul>
-            </div>
+            </div> */}
             </div>
         </div>
     )

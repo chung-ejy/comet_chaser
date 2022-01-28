@@ -40,7 +40,7 @@ const DataState = props => {
         iterations:[],
         trade_params:{},
         cloud_errors:[],
-        available_symbols:[],
+        available_symbols:["ALL"],
         bot_status:{},
         isAuth:false,
         user:null,
