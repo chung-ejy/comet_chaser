@@ -22,7 +22,7 @@ const Onboarding = () => {
                         <div className="col col-3">
                     <div className="list-group flex-column fixed-left">
                         {pages.map(page => 
-                        <button type="button" class="list-group-item list-group-item-action" name={page} onClick={onClick} key={page}>
+                        <button type="button" className="list-group-item list-group-item-action" name={page} onClick={onClick} key={page}>
                         {page}
                         </button> 
                         )}

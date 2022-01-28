@@ -16,7 +16,7 @@ const BacktestTable = () => {
                     </thead>
                     <tbody>
                     {backtest.map(row => 
-                        (<tr>
+                        (<tr key={row["date"]}>
                         {included_columns.map(key => ["buy_price","sell_price","delta"].includes(key) 
                         ? <td key={key}>{row[key].toFixed(2)}</td> 
                         : <td key={key}>{row[key]}</td>)}

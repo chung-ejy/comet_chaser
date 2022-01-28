@@ -11,8 +11,8 @@ const BackTestForm = () => {
             req:1,
             positions:1,
             entry_strategy: "all",
-            exit_strategy: "adaptive_hold",
-            value: false,
+            exit_strategy: "hold",
+            value: true,
             conservative: true,
             symbols:["ALL"],
             start:"2021-01-01T00:00",
@@ -46,7 +46,7 @@ const BackTestForm = () => {
         getBacktest(state)
     }
     const entries = ["standard","signal_based","parameter_defined","all"]
-    const exits = ["due_date","hold","adaptive_hold","adaptive_due_date"]
+    const exits = ["hold","due_date","adaptive_hold","adaptive_due_date"]
     return (
         <div className="card card-body mt-4 mb-4">
             <div className="row mt-2">
