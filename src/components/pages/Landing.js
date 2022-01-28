@@ -14,11 +14,11 @@ const Landing = () => {
                         <div className="col-sm-8">
                         <p className="lead m-3 align-text-middle text-right">
                             {isAuth ? `Hi ${user.username}` : `` }
-                            Welcome to CometChaser! My name is Comet, your personal crypto currency trader. 
-                            I'm built off of python and currently
-                            leverage the Coinbase Exchange api to execute your automated trades.
+                            Welcome to CometChaser! My name is Comet, your personal crypto currency backtester. 
+                            {/* I'm built off of python and currently
+                            leverage the Coinbase Exchange api to execute your automated backtests. */}
                             I was built for the purpose of providing you, the user,
-                            with an easy way to invest and trade in crypto currencies without the day to day research required to manage a crypto account.
+                            with an easy way to backtest trading crypto currencies without having to code it yourself.
                             You can sit back and relax while I:
                             </p>
                         <ul className="m-3 list-unstyled">
@@ -28,7 +28,7 @@ const Landing = () => {
                             <li>4) Sell crypto after user defined trading opportunities</li>
                         </ul>
                         <p className="lead m-3  text-right">
-                            In short, based off what your trade requirements are, I'll trade crypto for you.
+                            In short, based off what your backtest requirements, I'll backtest crypto for you.
                             When you're ready, head on over to the onboarding page and I'll get you set up! Your cryptocurrency journey is about to begin! Oh man
                             its going to be craaaazzy.    
                         </p>

@@ -19,11 +19,11 @@ export const App = () => {
                 {/* <Alert /> */}
                 <Routes>
                     <Route exact path ="/" element={<Landing />} />
-                    <Route exact path ="/profile" element={<Profile />} />
-                    <Route exact path ="/tracking" element={<Dashboard />} />
+                    {/* <Route exact path ="/profile" element={<Profile />} />
+                    <Route exact path ="/tracking" element={<Dashboard />} /> */}
                     <Route exact path ="/onboarding" element={<Onboarding />} />
-                    <Route exact path="/register" element={<Register/>} /> 
-                    <Route exact path="/login" element={<Login/>} /> 
+                    {/* <Route exact path="/register" element={<Register/>} /> 
+                    <Route exact path="/login" element={<Login/>} />  */}
                     <Route exact path="/backtest" element={<Backtest />} /> 
                 </Routes>
             </div>
