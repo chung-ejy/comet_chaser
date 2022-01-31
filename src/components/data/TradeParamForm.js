@@ -21,7 +21,7 @@ const TradeParamForm = () => {
     );
     const {whitelist_symbols} = state
     const onSymbol = (e) => {
-        setState({...state,[e.target.name]:[...state[e.target.name],e.target.value]});
+        setState({...state,["whitelist_symbols"]:[...state["whitelist_symbols"],e.target.value]});
     }
 
     const onDeleteSymbol = (e) => {
