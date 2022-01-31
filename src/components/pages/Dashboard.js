@@ -85,8 +85,8 @@ const Dashboard = () => {
                             <button type="button" onClick={onOrder} className="btn btn-primary m-2">orders</button>
                             <button type="button" onClick={onTrade} className="btn btn-primary m-2">trades</button>
                             <div className="row align-vertical-center">
-                                <div className="col-6"><TradeParams /></div>
-                                <div className="col-6"><TradeParamForm /></div>
+                                <div className="col-4"><TradeParams /></div>
+                                <div className="col-8"><TradeParamForm /></div>
                             </div>
                             <button type="button" onClick={onBigClick} className={`btn btn-${bot_status[product] ? "secondary": "primary"}`}>
                             {bot_status !== null ? bot_status[product] ? " SHUTDOWN" : " DEPLOY!!!" : ""}

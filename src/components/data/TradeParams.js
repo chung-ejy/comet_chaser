@@ -24,7 +24,7 @@ const TradeParams = () => {
                     </tr>
                         {Object.keys(trade_params).map(key => 
                             ["signal","req","value","retrack_days","value","conservative","exit_strategy","entry_strategy","positions"].includes(key) 
-                            ?                     <tr><td>{key}</td><td key={key}>{trade_params[key]}</td></tr>
+                            ?                     <tr key={key}><td>{key}</td><td key={key}>{trade_params[key]}</td></tr>
                             : null)}
                 </tbody>
             </table>

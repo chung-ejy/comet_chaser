@@ -11,7 +11,7 @@ const ProfileTable = () => {
                 <tbody> 
                         {Object.keys(user).map(key => 
                             ["username","email"].includes(key) 
-                            ?                     <tr><td>{key}</td><td key={key}>{user[key]}</td></tr>
+                            ?                     <tr key={key}><td>{key}</td><td key={key}>{user[key]}</td></tr>
                             : null)}
                 </tbody>
             </table>
