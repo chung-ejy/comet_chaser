@@ -4,8 +4,9 @@ import DataContext from "../../context/data/dataContext"
 // import Form from '../data/Form';
 import { Navigate } from 'react-router-dom';
 import TradeParams from '../data/TradeParams';
-import TradeParamForm from '../data/TradeParamForm';
 import KeyForm from "../data/KeyForm"
+import Paypal from '../payments/Paypal';
+import ProfileTable from '../data/ProfileTable';
 
 const Profile = () => {
     const dataContext = useContext(DataContext)
@@ -19,11 +20,14 @@ const Profile = () => {
             ,getSymbols
             ,updateBotStatus
             ,product
+            ,subscription
+            ,getSubscription
             } = dataContext;
     useEffect(() => {
         if (isAuth && user!==null) {
             getTradeParams()
             getBotStatus()
+            getSubscription()
             // getSymbols()
         }
     },//eslint-disable-next-line
@@ -39,20 +43,10 @@ const Profile = () => {
         
     }
 
-    const onBigClick = (e) => {
-        if (product === "test") {
-            updateBotStatus({"test":!bot_status[product]})
-        } else {
-            updateBotStatus({"live":!bot_status[product]})
-        }
-        
-    }
-
     return (<div className='card text-center mt-5'>
                 <div className='card-body'>
-                    <h1 onClick={onClick}className={`card-title text-center text-${bot_status[product] ? "primary": "secondary"}`}>
-                        {"Comet " + product[0].toUpperCase() + product.slice(1)}
-                        {bot_status !== null ? bot_status[product] ? " Online" : " Offline" : ""}
+                    <h1>
+                        Profile
                     </h1>
                 {!isAuth ? <Navigate to="/"/> : loading ? (
                     <h3 className="text-center m-3">
@@ -60,13 +54,10 @@ const Profile = () => {
                     </h3>
                     ) : user !== null ? (
                         <Fragment>
-                        <TradeParams />
-                        <button type="button" onClick={onBigClick} className={`btn btn-${bot_status[product] ? "secondary": "primary"}`}>
-                            {bot_status !== null ? bot_status[product] ? " SHUTDOWN" : " DEPLOY!!!" : ""}
-                        </button>
                         <div className="row">
-                        <div className="col-6"><TradeParamForm /></div>
-                        <div className="col-6"><KeyForm /></div>
+                        <div className="col-4"><ProfileTable /></div>
+                        <div className="col-4"><KeyForm /></div>
+                        <div className="col-4"><Paypal /></div>
                         </div>
                         </Fragment>
                     )  : null

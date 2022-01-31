@@ -21,7 +21,10 @@ import {
         UPDATE_TRADE_PARAMS,
         GET_BOT_STATUS,
         UPDATE_BOT_STATUS,
-        UPDATE_KEYS} from "./types";
+        UPDATE_KEYS,
+        CREATE_SUBSCRIPTION,
+        GET_SUBSCRIPTION,
+        UPDATE_SUBSCRIPTION} from "./types";
 
 import React, { useReducer } from "react";
 import DataContext from "./dataContext"
@@ -39,6 +42,7 @@ const DataState = props => {
         orders:[],
         iterations:[],
         trade_params:{},
+        subscription:{},
         cloud_errors:[],
         available_symbols:["ALL"],
         bot_status:{},
@@ -198,6 +202,58 @@ const DataState = props => {
         // });
     }
 
+    const createSubscription = (params) => {
+        setLoading()
+        params["data_request"] = "subscriptions"
+        params["active"] = true
+        params["username"] = state.user.username
+        axios.put(`${base_url}/api/roster/`,{params:params}).then(res=>{
+            dispatch({
+                type:CREATE_SUBSCRIPTION,
+                payload:res.data
+            })
+            getSubscription()
+        }).catch(err => {
+            stopLoading()
+            setError(err.message,"danger")
+        });
+    }
+
+    const getSubscription = () => {
+        setLoading()
+        const params = {}
+        params["username"] = state.user.username
+        params["data_request"] = "subscriptions"
+        axios.get(`${base_url}/api/roster/`,{params:params}).then(res=>{
+            dispatch({
+                type:GET_SUBSCRIPTION,
+                payload:res.data
+            })
+        }).catch(err => {
+            stopLoading()
+            setError(err.message,"danger")
+        });
+    }
+
+    const updateSubscription = () => {
+        setLoading()
+        const params = {}
+        params["username"] = state.user.username
+        params["subscription_id"] = state.subscription.subscription_id
+        params["data_request"] = "subscriptions"
+        params["active"] = false
+        console.log(params)
+        axios.put(`${base_url}/api/roster/`,{params:params}).then(res=>{
+            dispatch({
+                type:UPDATE_SUBSCRIPTION,
+                payload:res.data
+            })
+        }).catch(err => {
+            stopLoading()
+            setError(err.message,"danger")
+        });
+    }
+
     const getBotStatus = () => { 
         setLoading()
         axios.get(`${base_url}/api/roster/`,{params:{version:state.product
@@ -344,6 +400,10 @@ const DataState = props => {
             user:state.user,
             token:state.token,
             bot_status:state.bot_status,
+            subscription: state.subscription,
+            createSubscription,
+            getSubscription,
+            updateSubscription,
             getBotStatus,
             register,
             login,
@@ -351,13 +411,11 @@ const DataState = props => {
             setError,
             setTitle,
             setText,
-            // getHistoricals,
             getIterations,
             getOrders,
             getTradeParams,
             updateTradeParams,
             getTrades,
-            // getCloudErrors,
             getBacktest,
             setProduct,
             getSymbols,
@@ -369,24 +427,5 @@ const DataState = props => {
         </DataContext.Provider>
     )
 }
-
-export const tokenConfig = (getState) => {
-    // Get token from state
-    const token = getState().auth.token;
-  
-    // Headers
-    const config = {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    };
-  
-    // If token, add to headers config
-    if (token) {
-      config.headers['Authorization'] = `Token ${token}`;
-    }
-  
-    return config;
-  };
   
 export default DataState;
