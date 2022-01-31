@@ -39,7 +39,7 @@ const Backtesting = () => {
                         <div className="card m-3">
                         <h5 className="m-3">DISCLAIMER:</h5>
                         <p className="lead m-3">HISTORICAL PERFORMANCE IS NOT AN INDICATOR OF FUTURE PERFORMANCE! Although certain strategies and 
-                            parameters performed well in the past it does not necessarily mean your bot will perform equally in the future. With that being said,
+                            parameters performed well in the past, it does not necessarily mean your bot will perform equally in the future. With that being said,
                             if you're choosing to invest in the crypto market, you believe that blockchain and the underlying technologies of these cryptocurrencies
                             are valuable. Investing and trading with a systematic approach has shown to be successful in multiple financial asset classes. So 
                             find confidence in knowing that quantitative analysis is a proven strategy that will perform well if approached with a level head 
