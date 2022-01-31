@@ -28,7 +28,7 @@ const Paypal = () => {
             : <PayPalButtons
                 createSubscription={(data, actions) => {
                   return actions.subscription.create({
-                      'plan_id': process.env.SUBSCRIPTIONID,
+                      'plan_id': process.env.SUBSCRIPTIONID.toString(),
                   })
               }}
                 onApprove={(data, actions) => {

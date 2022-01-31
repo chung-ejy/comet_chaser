@@ -9,7 +9,7 @@ const Onboarding = () => {
     const [state,setState] = useState("introduction")
     const pages = ["introduction"
     ,"background","backtesting"
-    // ,"connecting","deploying","tracking"
+    ,"connecting","deploying","tracking"
 ]
     const onClick = (e) => {
         e.preventDefault()
