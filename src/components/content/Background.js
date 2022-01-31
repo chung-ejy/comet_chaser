@@ -7,7 +7,7 @@ const Background = () => {
                                 Background
                             </h1>
                         <p className="lead m-3  text-right">
-                            Alittle bit about me, COMET. I implement a trading strategy based off  <a target="_blank" without rel="noreferrer" href="https://www.investopedia.com/terms/t/technicalanalysis.asp">technical analysis</a>. 
+                            Alittle bit about me, Comet. I implement a trading strategy based off  <a target="_blank" without rel="noreferrer" href="https://www.investopedia.com/terms/t/technicalanalysis.asp">technical analysis</a>. 
                             I do not take into account current news or intrinisic financial factors of a
                             given crypto currency. Instead, I speculate on price and hope to capture investor sentiment and behavior through numbers. The advantage to my 
                             approach is consistency. I will execute the same strategy for every trade so long as my parameters remain constant. 

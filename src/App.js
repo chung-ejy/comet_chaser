@@ -12,8 +12,6 @@ import Profile from './components/pages/Profile'
 import Onboarding from './components/pages/Onboarding'
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 export const App = () => {
-
-
         return (
         <DataState>
         <PayPalScriptProvider options={{ "vault":"true"
@@ -22,7 +20,6 @@ export const App = () => {
             <Router>
             <Header />
             <div className="container-sm align-middle mb-5">
-                {/* <Alert /> */}
                 <Routes>
                     <Route exact path ="/" element={<Landing />} />
                     <Route exact path ="/profile" element={<Profile />} />

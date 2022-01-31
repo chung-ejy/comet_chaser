@@ -9,7 +9,11 @@ const Tracking = () => {
                                 Tracking
                             </h1>
                         <p className="lead m-3 ">
-                            Wow you deployed your first bot and its lit. You have three views that you can check out. 
+                            Wow you deployed your first bot and its lit. This is your dashboard to track your bots and see information
+                            pertaining to your parameters.
+                            <li><strong>Notice</strong> the status of your bot in the header</li>
+                            <li><strong>Toggle</strong> between the comet test bot and the comet live bot by clicking on the header</li>
+                            You have three views that you can check out. 
                          </p>
                          <div className="card m-3">
                          <div className="row m-3"><h3>Iterations View</h3></div>

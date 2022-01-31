@@ -23,11 +23,9 @@ const TradeParams = () => {
                         <th className="d-none d-lg-table-cell" scope="col">positions</th> */}
                     </tr>
                         {Object.keys(trade_params).map(key => 
-                            ["signal","req","value"].includes(key) 
+                            ["signal","req","value","retrack_days","value","conservative","exit_strategy","entry_strategy","positions"].includes(key) 
                             ?                     <tr><td>{key}</td><td key={key}>{trade_params[key]}</td></tr>
-                            : key !== "whitelist_symbols" 
-                            ? <tr><td>{key}</td><td key={key} className="d-none d-lg-table-cell">
-                                {trade_params[key]}</td></tr>  : null)}
+                            : null)}
                 </tbody>
             </table>
         {/* // </div> */}

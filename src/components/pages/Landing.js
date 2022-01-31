@@ -5,18 +5,18 @@ const Landing = () => {
     const dataContext = useContext(DataContext)
     const {isAuth,user} = dataContext
     return (<div className='card mt-5'>
-                <div className='card-body justify-content-left'>
+                <div className='card-body justify-content-center'>
                             <h1 className="card-title text-center">
-                                CometChaser
+                                Comet Chaser
                             </h1>`
-                        <div className="row">
+                        <div className="row text-center justify-content-center">
                         <img src={Logo} style={{height:"100%"}}className="img-fluid m-5 col-sm-2 align-middle" alt="Responsive"></img>
-                        <div className="col-sm-8">
-                        <p className="lead m-3 align-text-middle text-right">
+                        </div>
+                        <div className="row">
+                        <div className="col-sm">
+                        <p className="lead m-3 align-text-middle text-middle">
                             {isAuth ? `Hi ${user.username}` : `` }
-                            Welcome to CometChaser! My name is Comet, your personal crypto currency backtester. 
-                            {/* I'm built off of python and currently
-                            leverage the Coinbase Exchange api to execute your automated backtests. */}
+                            Welcome to Comet Chaser! My name is Comet, your personal crypto currency backtester. 
                             I was built for the purpose of providing you, the user,
                             with an easy way to backtest trading crypto currencies without having to code it yourself.
                             You can sit back and relax while I:

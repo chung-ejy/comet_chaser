@@ -7,7 +7,7 @@ import { GET_DATA, SET_TITLE, SET_TEXT, SET_LOADING,
         GET_TRADES, GET_CLOUD_ERRORS,GET_BACKTEST,GET_SYMBOLS
         , REGISTER,LOGIN,LOGOUT,FAILED_LOGIN,FAILED_REGISTER,GET_USER
         , GET_BOT_STATUS, UPDATE_TRADE_PARAMS, UPDATE_BOT_STATUS
-        ,GET_SUBSCRIPTION,CREATE_SUBSCRIPTION,UPDATE_SUBSCRIPTION
+        ,GET_SUBSCRIPTION,CREATE_SUBSCRIPTION,UPDATE_SUBSCRIPTION,STOP_LOADING
         ,UPDATE_KEYS } from "./types";
 
 const main_reducer = (state,action) => {
@@ -31,6 +31,11 @@ const main_reducer = (state,action) => {
                 ...state,
                 loading:true
             }
+        case STOP_LOADING:
+                return {
+                    ...state,
+                    loading:false
+                }
         case SET_TEXT:
             return {
                 ...state,
