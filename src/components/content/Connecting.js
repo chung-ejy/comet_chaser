@@ -73,8 +73,7 @@ const Connecting = () => {
                                 <li>the <strong className="text-primary">secret</strong> came from step 5</li>
                                 <li>the <strong className="text-primary">passphrase</strong> came from step 4</li>
                                 </ul>
-                                <p>Fill in the 
-                                from values without sandbox in the beginning for the live keys and the values with sandbox for sandbox keys.</p>
+                                <p>Fill in the form values without sandbox in the beginning for the live keys and the values with sandbox for sandbox keys.</p>
                                 </p> 
                             <img src={ApiKeyForm} className="img-fluid col-6 mt-3 mb-3" alt="Responsive"></img>
                             </div>
