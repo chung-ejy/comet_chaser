@@ -20,6 +20,7 @@ const Dashboard = () => {
                             ,isAuth
                             ,user
                             ,product
+                            ,getSymbols
                         } = dataContext;
     const {table} = state
     useEffect(() => {
@@ -29,6 +30,7 @@ const Dashboard = () => {
             getIterations()
             getOrders()
             getTrades()
+            getSymbols()
         } else {
             if (isAuth) {
                 loadUser()

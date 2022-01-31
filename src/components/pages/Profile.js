@@ -16,11 +16,8 @@ const Profile = () => {
             ,isAuth
             ,user
             ,getBotStatus
-            ,bot_status
-            ,getSymbols
-            ,updateBotStatus
             ,product
-            ,subscription
+            ,getSymbols
             ,getSubscription
             } = dataContext;
     useEffect(() => {
@@ -28,7 +25,7 @@ const Profile = () => {
             getTradeParams()
             getBotStatus()
             getSubscription()
-            // getSymbols()
+            getSymbols()
         }
     },//eslint-disable-next-line
     [product,user,isAuth]

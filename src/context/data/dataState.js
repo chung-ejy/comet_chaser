@@ -44,7 +44,7 @@ const DataState = props => {
         trade_params:{},
         subscription:{},
         cloud_errors:[],
-        available_symbols:["ALL"],
+        available_symbols:[],
         bot_status:{},
         isAuth:false,
         user:null,

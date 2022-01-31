@@ -23,6 +23,7 @@ const Paypal = () => {
   }
     return (<div className="card card-body mt-4 mb-4">
             <h5>Subscription Form</h5>
+            <h5>Standard: $5 / Month</h5>
             {active && subscription_id !== "" ? <button onClick={onClick} className={"btn btn-secondary"}>Cancel Subscription</button> :
             !active && subscription_id !== "" ? <button onClick={onClick} className={"btn btn-primary"}>Reactivate Subscription </button> 
             : <PayPalButtons

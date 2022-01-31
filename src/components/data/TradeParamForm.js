@@ -5,19 +5,7 @@ const TradeParamForm = () => {
     const dataContext = useContext(DataContext)
     const {trade_params,isAuth,loading, available_symbols,updateTradeParams,product,user} = dataContext
     const [state,setState] = useState(
-        {
-            retrack_days:3,
-            signal: 3,
-            req:1,
-            positions:1,
-            entry_strategy: "all",
-            exit_strategy: "adaptive_hold",
-            value: false,
-            conservative: true,
-            whitelist_symbols:["ALL"],
-            start:"2021-01-01T00:00",
-            end: "2022-01-01T00:00"          
-        }
+        trade_params
     )
     useEffect(() => {
         if (isAuth && user!==null) {
@@ -92,7 +80,7 @@ const TradeParamForm = () => {
             </div>
             {/* symbols */}
             
-            {/* <div key={"symbols"} className="form-group row mt-2">
+            <div key={"symbols"} className="form-group row mt-2">
                 <div key={"symbols"} className="col ml-3">
                     <label className="col-form-label">Add Crypto</label>
                     <select placeholder="ALL" name={"symbols"} onChange={onSymbol} className="form-control">
@@ -100,19 +88,19 @@ const TradeParamForm = () => {
                     <option key ={"ALL"}>ALL</option>
                     </select>
                 </div>
-            </div>  */}
+            </div> 
                 <div className="form-group row mt-2">
                     <div className="col">
                     <button type="submit" className="btn btn-primary form-control col">Update</button>
                     </div>
                 </div>
             </form>
-            {/* <div className="col">
+            <div className="col">
                 <h5>Included Crypto</h5>
                 <ul>
                 {user!==null && isAuth && !loading ? whitelist_symbols.map(symbol => <li className="list-group-item" onClick={onDeleteSymbol} key={symbol} value={symbol} >{symbol}</li>) : null}
                 </ul>
-            </div> */}
+            </div>
             </div>
         </div>
     )
