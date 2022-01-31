@@ -20,6 +20,13 @@ const KeyForm = () => {
     const onSubmit = (e) => {
         e.preventDefault()
         updateKeys(state)
+        setState( {apikey:"",
+        secret:"",
+        passphrase:"",
+        sandboxapikey:"",
+        sandboxsecret:"",
+        sandboxpassphrase:""
+    })
     }
     return (loading || !isAuth || user == null ? "" :
         <div className="card card-body mt-4 mb-4">

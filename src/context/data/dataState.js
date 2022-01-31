@@ -187,7 +187,7 @@ const DataState = props => {
     }
 
     const updateKeys = (params) => { 
-        // setLoading()
+        setLoading()
         params["username"] = state.user.username
         params["data_request"] = "keys"
         const data = {}
