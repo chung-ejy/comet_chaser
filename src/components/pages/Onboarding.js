@@ -39,7 +39,6 @@ const Onboarding = () => {
                         state === "deploying" ? <Deploying /> :
                         state === "introduction" ? <Intro /> :
                         <Tracking /> 
-                        null
                         }
                     </div>
                     </div>

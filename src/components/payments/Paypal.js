@@ -16,7 +16,6 @@ const Paypal = () => {
   const dataContext = useContext(DataContext)
   const {getBacktest,available_symbols, createSubscription, subscription, user,loading, updateSubscription,getSubscription} = dataContext
   const {active,subscription_id} = subscription
-  console.log(subscription)
   const onClick = (e) => {
     e.preventDefault()
     updateSubscription()

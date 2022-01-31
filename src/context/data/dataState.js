@@ -241,8 +241,7 @@ const DataState = props => {
         params["username"] = state.user.username
         params["subscription_id"] = state.subscription.subscription_id
         params["data_request"] = "subscriptions"
-        params["active"] = false
-        console.log(params)
+        params["active"] = fals
         axios.put(`${base_url}/api/roster/`,{params:params}).then(res=>{
             dispatch({
                 type:UPDATE_SUBSCRIPTION,
