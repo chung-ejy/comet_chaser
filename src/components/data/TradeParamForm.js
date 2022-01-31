@@ -57,8 +57,8 @@ const TradeParamForm = () => {
         e.preventDefault()
         updateTradeParams(state)
     }
-    const entries = ["standard","parameter_defined","all"]
-    const exits = ["due_date","hold","adaptive_hold","adaptive_due_date"]
+    const entries = ["standard","signal_based","parameter_defined","all"]
+    const exits = ["hold","due_date","adaptive_hold","adaptive_due_date"]
     return (loading || !isAuth || user===null ? "" :
         <div className="card card-body mt-4 mb-4">
             <div className="row mt-2">
