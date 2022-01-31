@@ -11,9 +11,9 @@ const Intro = () => {
                             <ol className="m-3 list-unstyled text-left">
                                 <li><strong>Understand</strong> the research behind my functionality</li>
                                <li> <strong>Backtest</strong> a strategy with trade parameters YOU defined</li>
-                               {/* <li> <strong>Connect</strong> your coinbase pro account</li>
+                               <li> <strong>Connect</strong> your coinbase pro account</li>
                                <li> <strong>Deploy</strong> both a test and live trading bot</li>
-                               <li> <strong>Track</strong> your bot's progress! </li> */}
+                               <li> <strong>Track</strong> your bot's progress! </li>
                             </ol>
                                 <p className="lead m-3  text-right">
                             When you're ready to get started start by checking out
