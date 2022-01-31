@@ -18,7 +18,7 @@ export const App = () => {
         <DataState>
         <PayPalScriptProvider options={{ "vault":"true"
                                     ,"intent":"subscription"
-                                    ,"client-id":  "AbXgQnb309nRg-Kqzz4llf2lIEe4Y4wXOo9f_ghfOF-a8MbJ8PfR-z0CqlilFrGtFTqLl-K0V82uw6FU"}}>
+                                    ,"client-id": process.env.PAYPALCLIENTID}}>
             <Router>
             <Header />
             <div className="container-sm align-middle mb-5">
