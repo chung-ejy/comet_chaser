@@ -29,7 +29,7 @@ const Paypal = () => {
             : <PayPalButtons
                 createSubscription={(data, actions) => {
                   return actions.subscription.create({
-                      'plan_id': "P-0SC60511TN410841SMH2VZGA",
+                      'plan_id': process.env.SUBSCRIPTIONID,
                   })
               }}
                 onApprove={(data, actions) => {
