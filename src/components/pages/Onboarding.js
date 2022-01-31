@@ -35,10 +35,10 @@ const Onboarding = () => {
                         { 
                         state === "background" ? <Background /> :
                         state === "backtesting" ? <Backtesting /> :
-                        // state === "connecting" ? <Connecting /> :
-                        // state === "deploying" ? <Deploying /> :
+                        state === "connecting" ? <Connecting /> :
+                        state === "deploying" ? <Deploying /> :
                         state === "introduction" ? <Intro /> :
-                        // <Tracking /> 
+                        <Tracking /> 
                         null
                         }
                     </div>
