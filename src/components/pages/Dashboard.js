@@ -69,8 +69,8 @@ const Dashboard = () => {
     return (<div className='card text-center mt-5'>
                 <div className='card-body'>
                              {/* <Alert /> */}
-                            <h1 onClick={onClick}className="card-title text-center">
-                                {"Comet " + product[0].toUpperCase() + product.slice(1) + " Dashboard"}
+                            <h1 onClick={onClick}className={`card-title text-center text-${bot_status[product] ? "primary": "secondary"}`}>
+                                {"Comet " + product[0].toUpperCase() + product.slice(1) + `${bot_status !== null ? bot_status[product] ? " Online" : " Offline" : ""}`}
                             </h1>
                 {loading || title.size < 1 ? (
                     <Fragment>
