@@ -7,6 +7,7 @@ import { GET_DATA, SET_TITLE, SET_TEXT, SET_LOADING,
         GET_TRADES, GET_CLOUD_ERRORS,GET_BACKTEST,GET_SYMBOLS
         , REGISTER,LOGIN,LOGOUT,FAILED_LOGIN,FAILED_REGISTER,GET_USER
         , GET_BOT_STATUS, UPDATE_TRADE_PARAMS, UPDATE_BOT_STATUS
+        ,GET_SUBSCRIPTION,CREATE_SUBSCRIPTION,UPDATE_SUBSCRIPTION
         ,UPDATE_KEYS } from "./types";
 
 const main_reducer = (state,action) => {
@@ -96,13 +97,21 @@ const main_reducer = (state,action) => {
                         trade_params:action.payload,
                         loading:false
                     }
+        case CREATE_SUBSCRIPTION:
+        case UPDATE_SUBSCRIPTION:
+        case GET_SUBSCRIPTION:
+            return {
+                ...state,
+                subscription:action.payload,
+                loading:false
+            }
         case UPDATE_BOT_STATUS:
         case GET_BOT_STATUS:
             return {
-                ...state,
-                bot_status:action.payload,
-                loading:false
-            }
+                    ...state,
+                    bot_status:action.payload,
+                    loading:false
+                }
         case UPDATE_KEYS:
             return {
                 ...state,

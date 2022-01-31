@@ -8,12 +8,15 @@ import TradeTable from '../data/TradeTable'
 // import ErrorTable from '../data/ErrorTable'
 import TradeParams from '../data/TradeParams'
 import { Navigate } from 'react-router-dom';
-
+import TradeParamForm from '../data/TradeParamForm';
 const Dashboard = () => {
     const dataContext = useContext(DataContext)
     const [state,setState] = useState({"table":"iterations"})
     const {loading,title,getTradeParams,getOrders,getIterations,getTrades, loadUser
+        , bot_status
                             ,setProduct
+                            ,getBotStatus
+                            ,updateBotStatus
                             ,isAuth
                             ,user
                             ,product
@@ -22,6 +25,7 @@ const Dashboard = () => {
     useEffect(() => {
         if (user!=null && isAuth) {
             getTradeParams()
+            getBotStatus()
             getIterations()
             getOrders()
             getTrades()
@@ -38,6 +42,14 @@ const Dashboard = () => {
             setProduct("live")
         } else {
             setProduct("test")
+        }
+        
+    }
+    const onBigClick = (e) => {
+        if (product === "test") {
+            updateBotStatus({"test":!bot_status[product]})
+        } else {
+            updateBotStatus({"live":!bot_status[product]})
         }
         
     }
@@ -70,9 +82,15 @@ const Dashboard = () => {
                             <button type="button" onClick={onIteration} className="btn btn-primary m-2">iterations</button>
                             <button type="button" onClick={onOrder} className="btn btn-primary m-2">orders</button>
                             <button type="button" onClick={onTrade} className="btn btn-primary m-2">trades</button>
+                            <div className="row">
+                                <div className="col-6"><TradeParams /></div>
+                                <div className="col-6"><TradeParamForm /></div>
+                            </div>
+                            <button type="button" onClick={onBigClick} className={`btn btn-${bot_status[product] ? "secondary": "primary"}`}>
+                            {bot_status !== null ? bot_status[product] ? " SHUTDOWN" : " DEPLOY!!!" : ""}
+                        </button>
                             {table === "orders" ? <OrderTable /> : table === "iterations" ? 
                             <Fragment> 
-                                <TradeParams /> 
                                 <IterationTable />
                             </Fragment>
                             : <TradeTable></TradeTable> 

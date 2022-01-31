@@ -64,7 +64,7 @@ const TradeParamForm = () => {
             <div className="row mt-2">
             <form className="col" onSubmit={onSubmit}>
             {/* numericals */}
-            <h5>Trading Parameters</h5>
+            <h5>Trading Parameters Form</h5>
                 {["retrack_days","signal","req","positions"].map( key =>
                         (<div className="form-group row mt-2" key={key}>
                         <label className="col-form-label col-sm-7">{`${key}: `}</label>
