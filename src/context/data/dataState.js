@@ -192,14 +192,14 @@ const DataState = props => {
         params["data_request"] = "keys"
         const data = {}
         Object.keys(params).map(key => params["key"] !== "" ? data[key] = params[key] : null) 
-        // axios.put(`${base_url}/api/roster/`,{params:params}).then(res=>{
-        //     dispatch({
-        //         type:UPDATE_KEYS
-        //     })
-        // }).catch(err => {
-        //     stopLoading()
-        //     setError(err.message,"danger")
-        // });
+        axios.put(`${base_url}/api/roster/`,{params:params}).then(res=>{
+            dispatch({
+                type:UPDATE_KEYS
+            })
+        }).catch(err => {
+            stopLoading()
+            setError(err.message,"danger")
+        });
     }
 
     const createSubscription = (params) => {
