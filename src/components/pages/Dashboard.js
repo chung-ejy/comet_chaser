@@ -81,17 +81,23 @@ const Dashboard = () => {
                         ) : !isAuth ? (<Navigate to="/"/>) : (
                             <Fragment>
                                 <div className="row">
-                                <button type="button" onClick={onIteration} className="btn col btn-primary m-2">iterations</button>
-                                <button type="button" onClick={onOrder} className="btn col btn-primary m-2">orders</button>
-                                <button type="button" onClick={onTrade} className="btn col btn-primary m-2">trades</button>
-                                </div>
-                                <div className="row">
-                                <div className="col"><TradeParams /></div>
-                                <div className="col"><TradeParamForm /></div>
-                                </div>
+                                <div className="col">
+                                <TradeParams />
                                 <button type="button" onClick={onBigClick} className={`btn btn-${bot_status[product] ? "secondary": "primary"}`}>
                                 {bot_status !== null ? bot_status[product] ? " SHUTDOWN" : " DEPLOY!!!" : ""}
-                            </button>
+                            </button></div>
+                                <div className="col"><TradeParamForm /></div>
+                                </div>
+                                <div className="card card-body container">
+                                <h3 className="text-center m-3">
+                                    Tables
+                                </h3>
+                                <div className="row">
+                                <button type="button" onClick={onIteration} className={`btn col btn-${table=="iterations" ? "secondary" : "primary"} m-2`}>iterations</button>
+                                <button type="button" onClick={onOrder} className={`btn col btn-${table=="orders" ? "secondary" : "primary"} m-2`}>orders</button>
+                                <button type="button" onClick={onTrade} className={`btn col btn-${table=="trades" ? "secondary" : "primary"} m-2`}>trades</button>
+                                </div>
+                                </div>
                                 {table === "orders" ? <OrderTable /> : table === "iterations" ? 
                                     <IterationTable />
                                 : <TradeTable />
