@@ -1,96 +1,84 @@
-import React, { useContext} from 'react'
+import React, { useContext,useState} from 'react'
 import { Link } from 'react-router-dom'
 import DataContext from '../../context/data/dataContext'
 const Header = () => {
     const dataContext = useContext(DataContext)
     const {isAuth,user,logout} = dataContext
-
+    const [state,setState] = useState(true)
     const onClick = (e) => {
+        e.preventDefault()
         logout()
     }
+    const onToggle = (e) => {
+        e.preventDefault()
+        setState(!state)
+
+    }
     const authLinks = (
-    <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-        <span className="navbar-text mr-3">
-        <strong>{user != null ? `Welcome ${user.username}` : ''}</strong>
-        </span>
-        <li className="nav-item">
-            <Link to="/onboarding" className="nav-link">
-            Onboarding
-            </Link>
-        </li>
-        <li className="nav-item">
-            <Link to="/profile" className="nav-link">
-            Profile
-            </Link>
-        </li>
-        <li className="nav-item">
-            <Link to="/backtest" className="nav-link">
-            Backtesting
-            </Link>
-        </li>
-        <li className="nav-item">
-            <Link to="/tracking" className="nav-link">
-            Tracking
-            </Link>
-        </li>  
-        <li className="nav-item">
-        {/* <button onClick={onClick} className="nav-link btn btn-sm"> */}
-            <Link onClick={onClick} className="nav-link" to="/">Logout</Link>
-        {/* </button> */}
-        </li>
-    </ul>
-    );
-    
-    const guestLinks = (
-        <ul className="navbar-nav ml-auto mt-2 mt-lg-0">
-        <li className="nav-item">
-            <Link to="/" className="nav-link">
-            Home
-            </Link>
-        </li> 
-        <li className="nav-item">
-            <Link to="/onboarding" className="nav-link">
-            Onboarding
-            </Link>
-        </li>
-        <li className="nav-item">
-            <Link to="/backtest" className="nav-link">
-            Backtesting
-            </Link>
-        </li> 
-        <li className="nav-item">
-            <Link to="/register" className="nav-link">
-            Register
-            </Link>
-        </li>
-        <li className="nav-item">
-            <Link to="/login" className="nav-link">
-            Login
-            </Link>
-        </li> 
+        <ul className="navbar-nav">
+            <li className="nav-item">
+                <Link to="/onboarding" className="nav-link">
+                Onboarding
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link to="/profile" className="nav-link">
+                Profile
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link to="/backtest" className="nav-link">
+                Backtesting
+                </Link>
+            </li>
+            <li className="nav-item">
+                <Link to="/tracking" className="nav-link">
+                Tracking
+                </Link>
+            </li>  
+            <li className="nav-item">
+                <Link onClick={onClick} className="nav-link" to="/">Logout</Link>
+            </li>
         </ul>
     );
     
+    const guestLinks = (
+        <div className="navbar-nav">
+            <Link to="/" className="nav-item nav-link">
+            Home
+            </Link> 
+            <Link to="/onboarding" className="nav-item nav-link">
+            Onboarding
+            </Link>
+            <Link to="/backtest" className="nav-item nav-link">
+            Backtesting
+            </Link> 
+            <Link to="/register" className="nav-item nav-link">
+            Register
+            </Link>
+            <Link to="/login" className="nav-item nav-link">
+            Login
+            </Link> 
+        </div>
+    );
+    
         return (
+            
           <nav className="navbar navbar-expand-sm navbar-dark bg-primary fixed-top mb-5">
-            <div className="container">
-              <button
-                className="navbar-toggler"
-                type="button"
-                data-toggle="collapse"
-                data-target="#navbarTogglerDemo01"
-                aria-controls="navbarTogglerDemo01"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-              >
-                <span className="navbar-toggler-icon" />
-              </button>
-              <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                <a className="navbar-brand" href="/">
-                    CometChaser
-                </a>
-              </div>
-                {isAuth ? authLinks : guestLinks}
+              <div className="container">
+              <div className="col-4">
+                    <button className="btn" onClick={onToggle} type="button">
+                        <span className="navbar-toggler-icon" />
+                    </button>  
+                </div>
+            <div className="row"> 
+                <div className="col-8">         
+                    <a className="navbar-brand" href="/">
+                        CometChaser
+                    </a>
+                    {state ? isAuth ? authLinks : guestLinks : null}
+                </div>    
+                </div>
             </div>
           </nav>
         );
