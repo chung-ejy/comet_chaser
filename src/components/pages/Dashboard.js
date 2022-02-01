@@ -80,9 +80,11 @@ const Dashboard = () => {
                             </h3>
                         ) : !isAuth ? (<Navigate to="/"/>) : (
                             <Fragment>
-                                <button type="button" onClick={onIteration} className="btn btn-primary m-2">iterations</button>
-                                <button type="button" onClick={onOrder} className="btn btn-primary m-2">orders</button>
-                                <button type="button" onClick={onTrade} className="btn btn-primary m-2">trades</button>
+                                <div className="row">
+                                <button type="button" onClick={onIteration} className="btn col btn-primary m-2">iterations</button>
+                                <button type="button" onClick={onOrder} className="btn col btn-primary m-2">orders</button>
+                                <button type="button" onClick={onTrade} className="btn col btn-primary m-2">trades</button>
+                                </div>
                                 <div className="row">
                                 <div className="col"><TradeParams /></div>
                                 <div className="col"><TradeParamForm /></div>
