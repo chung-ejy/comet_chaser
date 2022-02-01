@@ -4,10 +4,11 @@ import DataContext from '../../context/data/dataContext'
 const Header = () => {
     const dataContext = useContext(DataContext)
     const {isAuth,user,logout} = dataContext
-    const [state,setState] = useState(true)
+    const [state,setState] = useState(false)
     const onClick = (e) => {
         e.preventDefault()
         logout()
+        setState(false)
     }
     const onToggle = (e) => {
         e.preventDefault()
