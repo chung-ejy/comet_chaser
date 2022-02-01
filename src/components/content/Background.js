@@ -6,7 +6,7 @@ const Background = () => {
                             <h1 className="card-title text-center">
                                 Background
                             </h1>
-                        <p className="lead m-3  text-right">
+                        <p className=" m-3  text-right">
                             Alittle bit about me, Comet. I implement a trading strategy based off  <a target="_blank" without rel="noreferrer" href="https://www.investopedia.com/terms/t/technicalanalysis.asp">technical analysis</a>. 
                             I speculate on price and capture investor sentiment and behavior through numbers. The advantage to my 
                             approach is consistency. I will execute the same strategy for every trade so long as my parameters remain constant. 
@@ -16,8 +16,7 @@ const Background = () => {
                             on my different entry and exit strategies. <strong className="text-primary">Read the following carefully!</strong>
                         </p>
                         <br></br>
-                        <div className="row">
-                        <div className="card col-4 mb-3">
+                        <div className="card row mb-3">
                             <h5 className="mt-3">Technical Values:</h5>
                             <ul className="list-unstyled">
                             <li> <strong>Signal:</strong> Percentage change in price. This is the first derivative of price.</li>
@@ -26,7 +25,7 @@ const Background = () => {
                             <li>For additional information on derivatives check out this <a target="_blank" without rel="noreferrer" href="https://www.youtube.com/watch?v=WUvTyaaNkzM">link</a></li>
                             </ul>
                             </div>
-                            <div className="card col-4 mb-3">
+                            <div className="card row mb-3">
                             <h5 className="mt-3">Entry Strategies</h5>
                             <ul className="list-unstyled">
                             <li><strong>Standard: </strong>Buy if it falls or rises by a certain percentage.</li>
@@ -34,7 +33,7 @@ const Background = () => {
                             <li><strong>Parameter Defined: </strong>Buy based on research defined analysis</li>
                             <li> <strong>All: </strong>Buy if all the above requirements are met</li>
                             </ul>        </div>
-                            <div className="card col-4 mb-3">
+                            <div className="card row mb-3">
                             <h5 className="mt-3">Exit Strategies</h5>
                             <ul className="list-unstyled">
                             <li> <strong>Hold:</strong> Hold until the required percentage gain.</li>
@@ -46,9 +45,7 @@ const Background = () => {
 
                             
                         <br></br>
-            </div>
-        </div>
-    );
+            </div>    );
 };
 
 export default Background

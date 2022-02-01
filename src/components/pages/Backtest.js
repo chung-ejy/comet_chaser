@@ -16,9 +16,9 @@ const Backtest = () => {
 
     return (<div className='card text-center mt-5'>
                 <div className='card-body'>
-                            <h1 className="card-title text-center">
-                                Backtesting Dashboard
-                            </h1>
+                <h1 className="card-title text-center">
+                    Backtesting Dashboard
+                </h1>
                 {loading ? (
                     <Fragment>
                         <h3 className="text-center m-3">

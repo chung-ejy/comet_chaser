@@ -7,7 +7,7 @@ const Backtesting = () => {
                                 Backtesting
                             </h1>
                             <div className="card m-3">
-                        <p className="lead text-right m-3">
+                        <p className=" text-right m-3">
                             Anybody and everybody can backtest on Comet Chaser. You don't need an account to run a backtest! Some things to take into account 
                             while you use our backtesting service.</p>
                             </div>
@@ -21,7 +21,6 @@ const Backtesting = () => {
                             </div>
 
                         <br></br>
-                        <div className="row"></div>
                         <div className="card m-3">
                         <h5 className="m-3">Parameter Definitions:</h5>
                         <p className="m-3">The following are the parameters used to run a backtest and a trade strategy. <strong>Read carefully!</strong></p>
@@ -38,7 +37,7 @@ const Backtesting = () => {
                         </div>
                         <div className="card m-3">
                         <h5 className="m-3">DISCLAIMER:</h5>
-                        <p className="lead m-3">HISTORICAL PERFORMANCE IS NOT AN INDICATOR OF FUTURE PERFORMANCE! Although certain strategies and 
+                        <p className=" m-3">HISTORICAL PERFORMANCE IS NOT AN INDICATOR OF FUTURE PERFORMANCE! Although certain strategies and 
                             parameters performed well in the past, it does not necessarily mean your bot will perform equally in the future. With that being said,
                             if you're choosing to invest in the crypto market, you believe that blockchain and the underlying technologies of these cryptocurrencies
                             are valuable. Investing and trading with a systematic approach has shown to be successful in multiple financial asset classes. So 
@@ -47,7 +46,7 @@ const Backtesting = () => {
                         </p>
                         </div>
                         <div className="card m-3">
-                        <p className="lead m-3">
+                        <p className=" m-3">
                             Moving forward, once your ready head on over to the backtesting page, input the parameters you want to backtest and run your backtest!
                             I will then implement the given strategy over last years crypto prices and output a list of trades that I executed. Feel free
                             to analyze said trades and see whether or not your happy with the results. If not, try tweaking your parameters and try again! Have fun!

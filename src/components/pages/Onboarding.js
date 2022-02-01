@@ -22,7 +22,7 @@ const Onboarding = () => {
                         Onboarding
                     </h1>
                     <div className="row">
-                        <div className="col col-3">
+                        {/* <div className="col col-4">
                     <div className="list-group flex-column fixed-left">
                         {pages.map(page => 
                         <button type="button" className="list-group-item list-group-item-action" name={page} onClick={onClick} key={page}>
@@ -30,17 +30,15 @@ const Onboarding = () => {
                         </button> 
                         )}
                     </div>
-                    </div>
-                    <div className="col col-9">
-                        { 
-                        state === "background" ? <Background /> :
-                        state === "backtesting" ? <Backtesting /> :
-                        state === "connecting" ? <Connecting /> :
-                        state === "deploying" ? <Deploying /> :
-                        state === "introduction" ? <Intro /> :
+                    </div> */}
+                    {/* <div className="col col-8"> */}
+                         <Intro /> 
+                         <Background /> 
+                        <Backtesting /> 
+                         <Connecting /> 
+                         <Deploying /> 
                         <Tracking /> 
-                        }
-                    </div>
+                    {/* </div> */}
                     </div>
             </div>
         </div>

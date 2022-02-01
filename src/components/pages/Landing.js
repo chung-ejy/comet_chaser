@@ -14,7 +14,7 @@ const Landing = () => {
                         </div>
                         <div className="row">
                         <div className="col-sm">
-                        <p className="lead m-3 align-text-middle text-middle">
+                        <p className=" m-3 align-text-middle text-middle">
                             {isAuth ? `Hi ${user.username}` : `` }
                             Welcome to Comet Chaser! My name is Comet, your personal crypto currency trader. 
                             I was built for the purpose of providing you, the user,
@@ -27,7 +27,7 @@ const Landing = () => {
                             <li>3) Buy crypto during user defined trading opportunities</li>
                             <li>4) Sell crypto after user defined trading opportunities</li>
                         </ul>
-                        <p className="lead m-3  text-right">
+                        <p className=" m-3  text-right">
                             In short, based off your trading requirements, I'll trade crypto for you.
                             When you're ready, head on over to the onboarding page and I'll get you set up! Your cryptocurrency journey is about to begin! Oh man
                             its going to be craaaazzy.    
