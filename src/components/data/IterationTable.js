@@ -28,7 +28,8 @@ const IterationTable = () => {
                         {Object.keys(row).map(key => ["date","signal",	"req",	"retrack_days",	"value"
                                         ,"conservative"	,"entry_strategy",	"exit_strategy",	
                                         "positions"].includes(key) 
-                        ? <td key={key} className="d-none d-lg-table-cell">
+                        ? ["date","signal","req"].includes(key) ? <td key={key} className="">
+                            {row[key]}</td> : <td key={key} className="d-none d-lg-table-cell">
                             {row[key]}</td> : null)}
                         </tr>))
                     }

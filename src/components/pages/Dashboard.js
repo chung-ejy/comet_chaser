@@ -71,33 +71,30 @@ const Dashboard = () => {
     return (<div className='card text-center mt-5'>
                 <div className='card-body'>
                              {/* <Alert /> */}
-                            <h1 onClick={onClick}className={`card-title text-center text-${bot_status[product] ? "primary": "secondary"}`}>
-                                {"Comet " + product[0].toUpperCase() + product.slice(1) + `${bot_status !== null ? bot_status[product] ? " Online" : " Offline" : ""}`}
-                            </h1>
-                {loading || title.size < 1 ? (
-                    <Fragment>
-                        <h3 className="text-center m-3">
-                            <i className="fas fa-spinner text-primary fa-7x"></i>
-                        </h3>
-                    </Fragment>) : !isAuth ? (<Navigate to="/"/>) : (
-                        <Fragment>
-                            <button type="button" onClick={onIteration} className="btn btn-primary m-2">iterations</button>
-                            <button type="button" onClick={onOrder} className="btn btn-primary m-2">orders</button>
-                            <button type="button" onClick={onTrade} className="btn btn-primary m-2">trades</button>
-                            <div className="row align-vertical-center">
-                                <div className="col-4"><TradeParams /></div>
-                                <div className="col-8"><TradeParamForm /></div>
-                            </div>
-                            <button type="button" onClick={onBigClick} className={`btn btn-${bot_status[product] ? "secondary": "primary"}`}>
-                            {bot_status !== null ? bot_status[product] ? " SHUTDOWN" : " DEPLOY!!!" : ""}
-                        </button>
-                            {table === "orders" ? <OrderTable /> : table === "iterations" ? 
-                            <Fragment> 
-                                <IterationTable />
+                    <h1 onClick={onClick}className={`card-title text-center text-${bot_status[product] ? "primary": "secondary"}`}>
+                        {"Comet " + product[0].toUpperCase() + product.slice(1) + `${bot_status !== null ? bot_status[product] ? " Online" : " Offline" : ""}`}
+                    </h1>
+                    {loading ? (
+                            <h3 className="text-center m-3">
+                                <i className="fas fa-spinner text-primary fa-7x"></i>
+                            </h3>
+                        ) : !isAuth ? (<Navigate to="/"/>) : (
+                            <Fragment>
+                                <button type="button" onClick={onIteration} className="btn btn-primary m-2">iterations</button>
+                                <button type="button" onClick={onOrder} className="btn btn-primary m-2">orders</button>
+                                <button type="button" onClick={onTrade} className="btn btn-primary m-2">trades</button>
+                                <div className="row">
+                                <div className="col"><TradeParams /></div>
+                                <div className="col"><TradeParamForm /></div>
+                                </div>
+                                <button type="button" onClick={onBigClick} className={`btn btn-${bot_status[product] ? "secondary": "primary"}`}>
+                                {bot_status !== null ? bot_status[product] ? " SHUTDOWN" : " DEPLOY!!!" : ""}
+                            </button>
+                                {table === "orders" ? <OrderTable /> : table === "iterations" ? 
+                                    <IterationTable />
+                                : <TradeTable />
+                                }
                             </Fragment>
-                            : <TradeTable></TradeTable> 
-                            }
-                        </Fragment>
                     )
                 }
             </div>

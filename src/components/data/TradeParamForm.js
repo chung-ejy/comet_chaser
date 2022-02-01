@@ -50,7 +50,7 @@ const TradeParamForm = () => {
     return (loading || !isAuth || user===null ? "" :
         <div className="card card-body mt-4 mb-4">
             <div className="row mt-2">
-            <form className="col" onSubmit={onSubmit}>
+            <form className="" onSubmit={onSubmit}>
             {/* numericals */}
             <h5>Trading Parameters Form</h5>
                 {["retrack_days","signal","req","positions"].map( key =>
@@ -95,9 +95,9 @@ const TradeParamForm = () => {
                     </div>
                 </div>
             </form>
-            <div className="col">
-                <h5>Included Crypto</h5>
-                <ul>
+            <div className="mt-3">
+                <h5>Cryptolist</h5>
+                <ul className="list-unstyled">
                 {user!==null && isAuth && !loading ? whitelist_symbols.map(symbol => <li className="list-group-item" onClick={onDeleteSymbol} key={symbol} value={symbol} >{symbol}</li>) : null}
                 </ul>
             </div>

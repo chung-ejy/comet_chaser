@@ -52,8 +52,8 @@ const Profile = () => {
                     ) : user !== null ? (
                         <Fragment>
                         <div className="row">
-                        <div className="col-6"><ProfileTable /><Paypal /></div>
-                        <div className="col-6"><KeyForm /></div>
+                        <div className="col"><ProfileTable /><Paypal /></div>
+                        <div className="col"><KeyForm /></div>
                         </div>
                         </Fragment>
                     )  : null

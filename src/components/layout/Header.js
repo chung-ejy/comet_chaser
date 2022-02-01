@@ -73,9 +73,9 @@ const Header = () => {
                 </div>
             <div className="row"> 
                 <div className="col-8">         
-                    <a className="navbar-brand" href="/">
+                    <Link className="navbar-brand nav-link" to="/">
                         CometChaser
-                    </a>
+                    </Link>
                     {state ? isAuth ? authLinks : guestLinks : null}
                 </div>    
                 </div>
