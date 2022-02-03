@@ -38,7 +38,7 @@ const DataState = props => {
         trades:[],
         historicals:[],
         backtest:[],
-        analysis:[],
+        analysis:{},
         orders:[],
         iterations:[],
         trade_params:{},

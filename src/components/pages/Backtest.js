@@ -4,7 +4,8 @@ import DataContext from "../../context/data/dataContext"
 // import Form from '../data/Form';
 import BackTestForm from '../data/BackTestForm';
 import BacktestTable from '../data/BacktestTable';
-import AnalysisViz from '../data/AnalysisViz';
+// import AnalysisViz from '../data/AnalysisViz';
+import AnalysisResults from '../data/AnalysisResults';
 const Backtest = () => {
     const dataContext = useContext(DataContext)
     const {loading, getSymbols, product } = dataContext;
@@ -27,7 +28,8 @@ const Backtest = () => {
                     </Fragment>) : (
                         <Fragment>
                         <BackTestForm></BackTestForm>
-                        <AnalysisViz></AnalysisViz>
+                        {/* <AnalysisViz></AnalysisViz> */}
+                        <AnalysisResults />
                         <BacktestTable></BacktestTable>
                         </Fragment>
                     )

@@ -68,7 +68,8 @@ const main_reducer = (state,action) => {
                 return {
                     ...state,
                     backtest:action.payload.trades,
-                    analysis:action.payload.analysis.map(d => ({...d,["date"]: Date.parse(d["date"])})),
+                    // analysis:action.payload.analysis.map(d => ({...d,["date"]: Date.parse(d["date"])})),
+                    analysis:action.payload.analysis[0],
                     loading:false
                 }
         case GET_ITERATIONS:
