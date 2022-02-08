@@ -15,49 +15,54 @@ const Header = () => {
         setState(!state)
 
     }
+
+    const onSelect = (e) => {
+        setState(false)
+    }
+    
     const authLinks = (
         <ul className="navbar-nav">
             <li className="nav-item">
-                <Link to="/onboarding" className="nav-link">
+                <Link onClick={onSelect} to="/onboarding" className="nav-link">
                 Onboarding
                 </Link>
             </li>
             <li className="nav-item">
-                <Link to="/profile" className="nav-link">
+                <Link onClick={onSelect} to="/profile" className="nav-link">
                 Profile
                 </Link>
             </li>
             <li className="nav-item">
-                <Link to="/backtest" className="nav-link">
+                <Link onClick={onSelect} to="/backtest" className="nav-link">
                 Backtesting
                 </Link>
             </li>
             <li className="nav-item">
-                <Link to="/tracking" className="nav-link">
+                <Link onClick={onSelect} to="/tracking" className="nav-link">
                 Tracking
                 </Link>
             </li>  
             <li className="nav-item">
-                <Link onClick={onClick} className="nav-link" to="/">Logout</Link>
+                <Link onClick={onSelect} onClick={onClick} className="nav-link" to="/">Logout</Link>
             </li>
         </ul>
     );
     
     const guestLinks = (
         <div className="navbar-nav">
-            <Link to="/" className="nav-item nav-link">
+            <Link onClick={onSelect} to="/" className="nav-item nav-link">
             Home
             </Link> 
-            <Link to="/onboarding" className="nav-item nav-link">
+            <Link onClick={onSelect} to="/onboarding" className="nav-item nav-link">
             Onboarding
             </Link>
-            <Link to="/backtest" className="nav-item nav-link">
+            <Link onClick={onSelect} to="/backtest" className="nav-item nav-link">
             Backtesting
             </Link> 
-            <Link to="/register" className="nav-item nav-link">
+            <Link onClick={onSelect} to="/register" className="nav-item nav-link">
             Register
             </Link>
-            <Link to="/login" className="nav-item nav-link">
+            <Link onClick={onSelect} to="/login" className="nav-item nav-link">
             Login
             </Link> 
         </div>
@@ -74,7 +79,7 @@ const Header = () => {
                 </div>
             <div className="row"> 
                 <div className="col-8">         
-                    <Link className="navbar-brand nav-link" to="/">
+                    <Link onClick={onSelect} className="navbar-brand nav-link" to="/">
                         CometChaser
                     </Link>
                     {state ? isAuth ? authLinks : guestLinks : null}
